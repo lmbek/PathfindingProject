@@ -1,10 +1,9 @@
 package Files;
 
+import Files.Controllers.Controller;
+import Files.Models.Model;
 import Files.Views.View;
 import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
 // Application setup and main file (start of program)
@@ -16,6 +15,10 @@ public class Main extends Application {
 
     @Override public void start(Stage stage){
         // Initialize Application Scene
+        Model model = new Model();
+
+        Controller controller = new Controller();
+
         View view = new View(stage);
         view.show();
     }
