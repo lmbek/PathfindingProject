@@ -1,12 +1,14 @@
 package Files;
 
+import Files.Views.View;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 
-// Module View Controller
+// Application setup and main file (start of program)
+// Module View Controller Design Pattern
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -14,10 +16,7 @@ public class Main extends Application {
 
     @Override public void start(Stage stage){
         // Initialize Application Scene
-        stage.setTitle("Pathfinding Project");
-        Group group = new Group();
-        stage.setScene(new Scene(group,400,300));
-        stage.setMaximized(true);
-        stage.show();
+        View view = new View(stage);
+        view.show();
     }
 }
