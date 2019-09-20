@@ -25,6 +25,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Javafx12" level="application" />
+    <orderEntry type="library" name="javafx-swt" level="application" />
+    <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.2">
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar!/" />
