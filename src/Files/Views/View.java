@@ -24,6 +24,7 @@ public class View {
         button.setText("Klik mig");
         group.getChildren().add(button);
         group.getChildren().add(text);
+        MyCanvas canvas = new MyCanvas();
 
         this.stage.setMaximized(true);
         this.stage.show();
