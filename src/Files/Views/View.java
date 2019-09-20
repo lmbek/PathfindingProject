@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class View {
     private Stage stage;
 
+
     public View(Stage stage){
         this.stage = stage;
     }
