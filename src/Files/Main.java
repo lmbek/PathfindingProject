@@ -15,11 +15,6 @@ public class Main extends Application {
 
     @Override public void start(Stage stage){
         // Initialize Application Scene
-        Model model = new Model();
-
-        Controller controller = new Controller();
-
-        View view = new View(stage);
-        view.show();
+        Controller controller = new Controller(stage);
     }
 }
