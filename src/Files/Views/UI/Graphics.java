@@ -1,19 +1,18 @@
-package Files.Views;
+package Files.Views.UI;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import Files.Views.Elements.Canvas;
+import Files.Views.Elements.Drawables.Rectangle;
 import javafx.scene.text.Text;
 
-public class MyCanvas {
+public class Graphics {
 
-    public MyCanvas(){
+    public Graphics(){
         Canvas canvas = new Canvas();
         canvas.setHeight(300);
         canvas.setWidth(300);
         Rectangle rectangle = new Rectangle(100, 100, 100, 100);
         Text text = new Text();
         text.setText("hi");
-        canvas.getGraphicsContext2D();
+        //canvas.getGraphicsContext2D();
     }
 }
