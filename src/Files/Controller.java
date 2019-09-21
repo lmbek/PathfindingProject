@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -12,6 +14,11 @@ import javafx.stage.Stage;
 // This is the Main file (renamed to Controller)
 // The controller manages the interaction between input, model, logic and view.
 public class Controller extends Application {
+
+    public boolean fullScreen;
+    public Model model;
+    public View view;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -19,21 +26,30 @@ public class Controller extends Application {
     // Initialize Application Scene
     @Override public void start(Stage stage) throws Exception{
         // Model - Data and Logic (Calculations and pathfinding)
-        Model model = new Model();
-
+        this.model = new Model();
         // View - Graphics and UI - Root node of Application
-        View view = new View(stage);
-
-
-        view.show();
-        view.setMaximized(false);
-        addEventListener(view.UI.generatorButton);
+        this.view = new View(stage);
+        this.view.show();
         stage.show();
+        addEventListener(view.UI.generatorButton);
+        addKeyListener(view.UI.generatorButton);
     }
 
     public void addEventListener(Node node){
         node.setOnMouseClicked((event)->{
-            System.out.println("test");
+            System.out.println("fullscreen "+fullScreen);
+            fullScreen = !fullScreen;
+            this.view.setMaximized(fullScreen);
+        });
+    }
+
+    public void addKeyListener(Node node){
+        node.setOnKeyPressed(event -> {
+            System.out.println(event.getCode());
+            if(event.getCode().equals(KeyCode.ENTER)) {
+                // do something
+                System.out.println("You Pressed Enter");
+            }
         });
     }
 }
