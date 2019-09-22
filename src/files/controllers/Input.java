@@ -6,12 +6,14 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import java.util.ArrayList;
 
-public class Input {
+public abstract class Input {
 
     private boolean fullScreen;
-    private final View view;
+    protected final Model model;
+    protected final View view;
 
-    public Input(Model model, View view){
+    protected Input(Model model, View view){
+        this.model = model;
         this.view = view;
 
         addEventListeners(view.getUI().getEventNodes());
