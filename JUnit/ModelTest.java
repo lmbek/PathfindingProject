@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class ModelTest {
 
-    Model model;
+    private Model model;
 
     public ModelTest(){
         model = new Model();

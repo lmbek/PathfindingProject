@@ -15,16 +15,16 @@ import javafx.stage.Stage;
 // The controller manages the interaction between input, model, logic and view.
 public class Controller extends Application {
 
-    public boolean fullScreen;
-    public Model model;
-    public View view;
+    private boolean fullScreen;
+    private Model model;
+    private View view;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     // Initialize Application Scene
-    @Override public void start(Stage stage) throws Exception{
+    @Override public void start(Stage stage) {
         // Model - Data and Logic (Calculations and pathfinding)
         this.model = new Model();
         // View - Graphics and UI - Root node of Application
@@ -36,7 +36,7 @@ public class Controller extends Application {
     }
 
     public void addEventListener(Node node){
-        node.setOnMouseClicked((event)->{
+        node.setOnMouseClicked( event-> {
             System.out.println("fullscreen "+fullScreen);
             fullScreen = !fullScreen;
             this.view.setMaximized(fullScreen);

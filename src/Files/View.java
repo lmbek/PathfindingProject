@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 // View manages the graphics
 // This is the Root node of Application
 public class View extends Group {
-    public Stage stage;
+    private Stage stage;
 
     public UserInterface UI;
 
@@ -26,7 +26,7 @@ public class View extends Group {
         addUI();
     }
 
-    public void addUI(){
+    private void addUI(){
 
     }
 

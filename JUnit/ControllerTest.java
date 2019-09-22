@@ -4,7 +4,7 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 
 public class ControllerTest {
-    Controller controller;
+    private Controller controller;
 
     ControllerTest(){
         controller = new Controller();
