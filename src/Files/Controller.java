@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 // Application setup and main file (start of program)
-// Module View Controller Design Pattern
+// Model View Controller Design Pattern
 // This is the Main file (renamed to Controller)
 // The controller manages the interaction between input, model, logic and view.
 public class Controller extends Application {
