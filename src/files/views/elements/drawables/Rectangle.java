@@ -1,6 +1,6 @@
-package Files.Views.Elements.Drawables;
+package files.views.elements.drawables;
 
-import Files.Views.Drawables;
+import files.views.Drawables;
 import javafx.scene.canvas.GraphicsContext;
 
 // Note: Not sure if we should use javafx.scene.shape.Rectangle or just make our own

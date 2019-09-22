@@ -1,16 +1,14 @@
-import Files.Main;
-import Files.Views.Elements.Button;
+import files.Main;
 import org.junit.jupiter.api.Test;
 
-public class MainTest {
-    private Main main;
+class MainTest {
 
     MainTest(){
-        main = new Main();
+        Main main = new Main();
     }
 
     @Test
-    public void TestingConstructor(){
+    void TestingConstructor(){
 
         //assertEquals(3, result);
         //assertEquals("A guy with a brain","Lars Morten Bek");

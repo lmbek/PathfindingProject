@@ -1,17 +1,15 @@
-import Files.Model;
+import files.Model;
 import org.junit.jupiter.api.Test;
 
 
-public class ModelTest {
+class ModelTest {
 
-    private Model model;
-
-    public ModelTest(){
-        model = new Model();
+    ModelTest(){
+        Model model = new Model();
     }
 
     @Test
-    public void XTest(){
+    void XTest(){
         //assertEquals(3, result);
         //assertEquals("A guy with a brain","Lars Morten Bek");
     }

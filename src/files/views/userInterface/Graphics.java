@@ -1,7 +1,7 @@
-package Files.Views.UI;
+package files.views.userInterface;
 
-import Files.Views.Elements.Canvas;
-import Files.Views.Elements.Drawables.Rectangle;
+import files.views.elements.Canvas;
+import files.views.elements.drawables.Rectangle;
 import javafx.scene.text.Text;
 
 public class Graphics {

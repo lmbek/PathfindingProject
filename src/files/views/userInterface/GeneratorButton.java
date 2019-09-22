@@ -1,8 +1,6 @@
-package Files.Views.UI;
+package files.views.userInterface;
 
-import Files.Views.Elements.Button;
-
-public class GeneratorButton extends Button {
+public class GeneratorButton extends javafx.scene.control.Button {
     public GeneratorButton(){
         super();
     }

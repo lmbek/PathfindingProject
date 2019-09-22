@@ -1,10 +1,9 @@
-package Files.Views.Elements;
+package files.views.elements;
 
-import Files.Views.Drawables;
+import files.views.Drawables;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Canvas extends javafx.scene.canvas.Canvas implements Drawables {
     public void draw(GraphicsContext graphicsContext){
-        
     }
 }

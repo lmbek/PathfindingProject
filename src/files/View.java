@@ -1,37 +1,42 @@
-package Files;
+package files;
 
-import Files.Views.Elements.Nodes.Group;
-import Files.Views.UserInterface;
+import files.views.UserInterface;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 // View manages the graphics
 // This is the Root node of Application
 public class View extends Group {
-    private Stage stage;
+    private final Stage stage;
 
-    protected UserInterface UI;
+    private UserInterface UI;
 
-    protected View(Stage stage){
+    View(Stage stage){
         this.stage = stage;
         this.show();
     }
 
 
+    @SuppressWarnings("SpellCheckingInspection")
     private void show(){
         this.stage.setTitle("Pathfinding Project"); // Add Title
 
         UI = new UserInterface(this);
-        this.addChildren(UI);
+        this.getChildren().add(UI);
         this.stage.setScene(new Scene(this,400,300)); // Setup Scene
         addUI();
+    }
+
+    public UserInterface getUI(){
+        return UI;
     }
 
     private void addUI(){
 
     }
 
-    protected void setMaximized(Boolean bool){
+    public void setMaximized(Boolean bool){
         this.stage.setMaximized(bool);
     }
 }

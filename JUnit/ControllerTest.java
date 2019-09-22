@@ -1,7 +1,7 @@
-import Files.Controller;
+import files.Controller;
 import org.junit.jupiter.api.Test;
 
-public class ControllerTest {
+class ControllerTest {
     private Controller controller;
 
     ControllerTest(){
@@ -10,7 +10,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void TestingConstructor(){
+    void TestingConstructor(){
 
         //assertEquals(3, result);
         //assertEquals("A guy with a brain","Lars Morten Bek");
