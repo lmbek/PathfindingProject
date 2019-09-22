@@ -1,13 +1,10 @@
 package Files.Views;
 
 import Files.View;
-import Files.Views.Elements.Nodes.GridPane;
 import Files.Views.Elements.Nodes.Group;
 import Files.Views.Elements.Nodes.HBox;
-import Files.Views.Elements.Nodes.VBox;
 import Files.Views.UI.GeneratorButton;
 import Files.Views.UI.Graphics;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -15,7 +12,7 @@ import javafx.scene.text.Text;
 public class UserInterface extends Group {
     private View view;
     public GeneratorButton generatorButton;
-    public Graphics graphics;
+    private Graphics graphics;
 
     public UserInterface(View view) {
         this.view = view;
@@ -45,7 +42,7 @@ public class UserInterface extends Group {
 
 
 
-    public void addButton() {
+    protected void addButton() {
 
     }
 

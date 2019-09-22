@@ -10,14 +10,15 @@ import javafx.stage.Stage;
 public class View extends Group {
     private Stage stage;
 
-    public UserInterface UI;
+    protected UserInterface UI;
 
-    public View(Stage stage){
+    protected View(Stage stage){
         this.stage = stage;
+        this.show();
     }
 
 
-    public void show(){
+    private void show(){
         this.stage.setTitle("Pathfinding Project"); // Add Title
 
         UI = new UserInterface(this);
@@ -30,7 +31,7 @@ public class View extends Group {
 
     }
 
-    public void setMaximized(Boolean bool){
+    protected void setMaximized(Boolean bool){
         this.stage.setMaximized(bool);
     }
 }

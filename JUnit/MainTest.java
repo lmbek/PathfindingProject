@@ -1,12 +1,12 @@
-import Files.Controller;
+import Files.Main;
+import Files.Views.Elements.Button;
 import org.junit.jupiter.api.Test;
 
-public class ControllerTest {
-    private Controller controller;
+public class MainTest {
+    private Main main;
 
-    ControllerTest(){
-
-        //controller = new Controller();
+    MainTest(){
+        main = new Main();
     }
 
     @Test
