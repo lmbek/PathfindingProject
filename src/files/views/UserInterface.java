@@ -16,8 +16,6 @@ public class UserInterface extends Group {
     private final ArrayList<Node> eventNodes = new ArrayList<>();
 
     public UserInterface(View view) {
-
-
         HBox hbox = new HBox();
         hbox.setStyle("-fx-background-color: lightgreen;");
         hbox.setStyle("-fx-padding: 20px;");

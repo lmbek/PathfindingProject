@@ -9,8 +9,7 @@ import javafx.stage.Stage;
 // This is the Root node of Application
 public class View extends Group {
     private final Stage stage;
-
-    private UserInterface UI;
+    private final UserInterface UI = new UserInterface(this);
 
     View(Stage stage){
         this.stage = stage;
@@ -22,7 +21,6 @@ public class View extends Group {
     private void show(){
         this.stage.setTitle("Pathfinding Project"); // Add Title
 
-        UI = new UserInterface(this);
         this.getChildren().add(UI);
         this.stage.setScene(new Scene(this,400,300)); // Setup Scene
         addUI();
