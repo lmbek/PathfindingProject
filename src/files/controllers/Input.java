@@ -6,13 +6,13 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import java.util.ArrayList;
 
-public abstract class Input {
+public class Input {
 
     private boolean fullScreen;
-    protected final Model model;
-    protected final View view;
+    private final Model model;
+    private final View view;
 
-    protected Input(Model model, View view){
+    public Input(Model model, View view){
         this.model = model;
         this.view = view;
 
