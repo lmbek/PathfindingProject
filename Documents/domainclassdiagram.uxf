@@ -6,47 +6,65 @@
     <id>UMLClass</id>
     <coordinates>
       <x>530</x>
-      <y>200</y>
-      <w>100</w>
-      <h>50</h>
+      <y>180</y>
+      <w>120</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Controller
+-
+Model model
+View view(stage)
 valign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
-      <y>210</y>
-      <w>100</w>
-      <h>50</h>
+      <x>730</x>
+      <y>130</y>
+      <w>190</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>View
+-
+Stage stage
+UserInterface UI
+-
+show()
+getUI()
+setMaximized(Boolean bool)
 valign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
-      <y>200</y>
-      <w>100</w>
-      <h>50</h>
+      <x>280</x>
+      <y>180</y>
+      <w>180</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Model
+-
+environment : Environment
+pathfinding : Pathfinding
 valign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>80</y>
-      <w>60</w>
-      <h>40</h>
+      <x>530</x>
+      <y>20</y>
+      <w>150</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Main
+-
+
+-
+start(Stage stage)
+new Controller(stage)
 valign=center
 style=autoresize</panel_attributes>
     <additional_attributes/>
@@ -54,30 +72,30 @@ style=autoresize</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>210</y>
-      <w>140</w>
+      <x>640</x>
+      <y>190</y>
+      <w>110</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
-      <y>210</y>
-      <w>160</w>
+      <x>450</x>
+      <y>190</y>
+      <w>100</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -85,13 +103,13 @@ m2=1
       <x>570</x>
       <y>110</y>
       <w>40</w>
-      <h>110</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -259,7 +277,7 @@ m2=0...*
     <id>UMLClass</id>
     <coordinates>
       <x>600</x>
-      <y>320</y>
+      <y>340</y>
       <w>60</w>
       <h>40</h>
     </coordinates>
@@ -284,7 +302,7 @@ style=autoresize</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
+      <x>190</x>
       <y>320</y>
       <w>100</w>
       <h>40</h>
@@ -297,7 +315,7 @@ style=autoresize</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
+      <x>230</x>
       <y>240</y>
       <w>120</w>
       <h>100</h>
@@ -325,22 +343,22 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>580</x>
+      <x>590</x>
       <y>240</y>
-      <w>80</w>
-      <h>100</h>
+      <w>70</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0;50.0;50.0;50.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;40.0;50.0;40.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>500</x>
-      <y>320</y>
+      <y>340</y>
       <w>60</w>
       <h>40</h>
     </coordinates>
@@ -354,14 +372,14 @@ style=autoresize</panel_attributes>
     <coordinates>
       <x>520</x>
       <y>240</y>
-      <w>80</w>
-      <h>100</h>
+      <w>70</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>50.0;10.0;50.0;50.0;10.0;50.0;10.0;80.0</additional_attributes>
+    <additional_attributes>40.0;10.0;40.0;50.0;10.0;50.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
