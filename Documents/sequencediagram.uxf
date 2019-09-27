@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>100</y>
+      <x>430</x>
+      <y>70</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>700</x>
-      <y>100</y>
+      <x>770</x>
+      <y>70</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>120</y>
+      <x>470</x>
+      <y>90</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>120</y>
+      <x>810</x>
+      <y>90</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -48,8 +48,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>400</x>
-      <y>170</y>
+      <x>470</x>
+      <y>140</y>
       <w>20</w>
       <h>160</h>
     </coordinates>
@@ -59,8 +59,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>740</x>
-      <y>250</y>
+      <x>810</x>
+      <y>220</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -70,8 +70,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
-      <y>490</y>
+      <x>940</x>
+      <y>460</y>
       <w>110</w>
       <h>40</h>
     </coordinates>
@@ -82,8 +82,8 @@ HTTP Request</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>440</y>
+      <x>1030</x>
+      <y>410</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
@@ -94,8 +94,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>100</y>
+      <x>630</x>
+      <y>70</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -105,8 +105,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>120</y>
+      <x>670</x>
+      <y>90</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -116,8 +116,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>230</x>
-      <y>30</y>
+      <x>300</x>
+      <y>0</y>
       <w>60</w>
       <h>110</h>
     </coordinates>
@@ -127,8 +127,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>120</y>
+      <x>320</x>
+      <y>90</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -138,8 +138,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>600</x>
-      <y>180</y>
+      <x>670</x>
+      <y>150</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -149,8 +149,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>250</x>
-      <y>170</y>
+      <x>320</x>
+      <y>140</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -160,8 +160,8 @@ HTTP Response</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>370</y>
+      <x>330</x>
+      <y>340</y>
       <w>360</w>
       <h>40</h>
     </coordinates>
@@ -172,8 +172,8 @@ Generate map</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>300</y>
+      <x>480</x>
+      <y>270</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
@@ -184,8 +184,8 @@ Generate graphics</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>180</y>
+      <x>480</x>
+      <y>150</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -197,8 +197,8 @@ Add eventListeners
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>160</y>
+      <x>330</x>
+      <y>130</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -209,8 +209,8 @@ Start App</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>210</y>
+      <x>480</x>
+      <y>180</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
@@ -221,8 +221,8 @@ eventListeners added</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>240</y>
+      <x>480</x>
+      <y>210</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -233,8 +233,8 @@ give graphicsData</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>270</y>
+      <x>480</x>
+      <y>240</y>
       <w>350</w>
       <h>50</h>
     </coordinates>
@@ -246,8 +246,8 @@ graphicsData given
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>230</y>
+      <x>670</x>
+      <y>200</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -257,8 +257,8 @@ graphicsData given
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>600</x>
-      <y>310</y>
+      <x>670</x>
+      <y>280</y>
       <w>20</w>
       <h>120</h>
     </coordinates>
@@ -268,8 +268,8 @@ graphicsData given
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>330</y>
+      <x>330</x>
+      <y>300</y>
       <w>360</w>
       <h>50</h>
     </coordinates>
@@ -281,8 +281,8 @@ graphics generated
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>200</y>
+      <x>320</x>
+      <y>170</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -292,8 +292,8 @@ graphics generated
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>250</x>
-      <y>330</y>
+      <x>320</x>
+      <y>300</y>
       <w>20</w>
       <h>70</h>
     </coordinates>
@@ -303,8 +303,8 @@ graphics generated
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>320</y>
+      <x>470</x>
+      <y>290</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -314,8 +314,8 @@ graphics generated
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>400</x>
-      <y>400</y>
+      <x>470</x>
+      <y>370</y>
       <w>20</w>
       <h>110</h>
     </coordinates>
@@ -325,8 +325,8 @@ graphics generated
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>400</y>
+      <x>480</x>
+      <y>370</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
@@ -337,8 +337,8 @@ Fetch a random map</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>430</y>
+      <x>480</x>
+      <y>400</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -349,8 +349,8 @@ Generate a random map</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>300</y>
+      <x>810</x>
+      <y>270</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -360,8 +360,8 @@ Generate a random map</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>740</x>
-      <y>430</y>
+      <x>810</x>
+      <y>400</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -371,8 +371,8 @@ Generate a random map</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>450</y>
+      <x>480</x>
+      <y>420</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -383,8 +383,8 @@ Random map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>420</y>
+      <x>670</x>
+      <y>390</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -394,8 +394,8 @@ Random map generated</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>600</x>
-      <y>480</y>
+      <x>670</x>
+      <y>450</y>
       <w>20</w>
       <h>120</h>
     </coordinates>
@@ -405,8 +405,8 @@ Random map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>480</y>
+      <x>480</x>
+      <y>450</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
@@ -417,8 +417,8 @@ Random map send</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>510</y>
+      <x>330</x>
+      <y>480</y>
       <w>360</w>
       <h>40</h>
     </coordinates>
@@ -429,8 +429,8 @@ Map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>390</y>
+      <x>320</x>
+      <y>360</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -440,8 +440,8 @@ Map generated</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>250</x>
-      <y>520</y>
+      <x>320</x>
+      <y>490</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -451,8 +451,8 @@ Map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>500</y>
+      <x>470</x>
+      <y>470</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -462,8 +462,8 @@ Map generated</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>400</x>
-      <y>570</y>
+      <x>470</x>
+      <y>540</y>
       <w>20</w>
       <h>140</h>
     </coordinates>
@@ -473,8 +473,8 @@ Map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>480</y>
+      <x>810</x>
+      <y>450</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -484,8 +484,8 @@ Map generated</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>740</x>
-      <y>590</y>
+      <x>810</x>
+      <y>560</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -495,8 +495,8 @@ Map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>590</y>
+      <x>670</x>
+      <y>560</y>
       <w>30</w>
       <h>110</h>
     </coordinates>
@@ -506,8 +506,8 @@ Map generated</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>600</x>
-      <y>680</y>
+      <x>670</x>
+      <y>650</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -517,8 +517,8 @@ Map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>560</y>
+      <x>320</x>
+      <y>530</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -528,8 +528,8 @@ Map generated</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>250</x>
-      <y>670</y>
+      <x>320</x>
+      <y>640</y>
       <w>20</w>
       <h>70</h>
     </coordinates>
@@ -539,8 +539,8 @@ Map generated</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>180</x>
-      <y>360</y>
+      <x>250</x>
+      <y>330</y>
       <w>610</w>
       <h>180</h>
     </coordinates>
@@ -550,20 +550,20 @@ Map generated</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>540</y>
+      <x>330</x>
+      <y>510</y>
       <w>360</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-Indsæt punkter</panel_attributes>
+Insert points</panel_attributes>
     <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>560</y>
+      <x>480</x>
+      <y>530</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
@@ -574,20 +574,20 @@ Pathfind</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>590</y>
+      <x>480</x>
+      <y>560</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-Give me pathfinding data</panel_attributes>
+Give pathfinding data</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>610</y>
+      <x>480</x>
+      <y>580</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -598,20 +598,20 @@ Pathfinding data sent</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>640</y>
+      <x>480</x>
+      <y>610</y>
       <w>150</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-Use algortihm</panel_attributes>
+Use algorithm</panel_attributes>
     <additional_attributes>10.0;40.0;50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>680</y>
+      <x>480</x>
+      <y>650</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
@@ -622,8 +622,8 @@ Pathfinding result sent</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
-      <y>690</y>
+      <x>680</x>
+      <y>660</y>
       <w>250</w>
       <h>60</h>
     </coordinates>
@@ -634,8 +634,8 @@ Show algorithm with graphics</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>710</y>
+      <x>330</x>
+      <y>680</y>
       <w>360</w>
       <h>40</h>
     </coordinates>
