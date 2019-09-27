@@ -2,416 +2,10 @@
 <diagram program="umlet" version="14.3.0">
   <zoom_level>8</zoom_level>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>64</x>
-      <y>384</y>
-      <w>80</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>_:Client_</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>200</x>
-      <y>384</y>
-      <w>80</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>_:Server_</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>96</x>
-      <y>400</y>
-      <w>24</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>232</x>
-      <y>400</y>
-      <w>24</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>96</x>
-      <y>440</y>
-      <w>16</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>232</x>
-      <y>440</y>
-      <w>16</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>104</x>
-      <y>456</y>
-      <w>144</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;
-HTTP Request</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>104</x>
-      <y>504</y>
-      <w>144</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-HTTP Response</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>536</x>
-      <y>152</y>
-      <w>80</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>Controller
--
-Model model
-View view</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>688</x>
-      <y>136</y>
-      <w>168</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes>View
--
-Stage stage
-UserInterface UI
--
-show()
-getUI()
-setMaximized(Boolean bool)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>320</x>
-      <y>152</y>
-      <w>152</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>Model
--
-environment : Environment
-pathfinding : Pathfinding</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>504</x>
-      <y>0</y>
-      <w>128</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>Main
--
-model : Model
-view : View
-controller : Controller
--
-start(Stage stage)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>608</x>
-      <y>160</y>
-      <w>96</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes>
-    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>464</x>
-      <y>160</y>
-      <w>88</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes>
-    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>568</x>
-      <y>80</y>
-      <w>32</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>648</x>
-      <y>304</y>
-      <w>184</w>
-      <h>64</h>
-    </coordinates>
-    <panel_attributes>User Interface
--
-GeneratorButton generatorButton
-CanvasGraphics graphics</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>720</x>
-      <y>232</y>
-      <w>32</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>744</x>
-      <y>408</y>
-      <w>112</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>CanvasGraphics</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>608</x>
-      <y>408</y>
-      <w>104</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>GeneratorButton</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>672</x>
-      <y>360</y>
-      <w>72</w>
-      <h>64</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>720</x>
-      <y>360</y>
-      <w>72</w>
-      <h>64</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=1
-</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>104</x>
-      <y>208</y>
-      <w>160</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Select Pathfinding Algorithm</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>104</x>
-      <y>152</y>
-      <w>96</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Generate map</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>80</x>
-      <y>0</y>
-      <w>200</w>
-      <h>336</h>
-    </coordinates>
-    <panel_attributes>PathfindingProject
-halign=left</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLActor</id>
-    <coordinates>
-      <x>8</x>
-      <y>96</y>
-      <w>48</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>User</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>48</x>
-      <y>136</y>
-      <w>72</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;70.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>48</x>
-      <y>136</y>
-      <w>72</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;70.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>104</x>
-      <y>88</y>
-      <w>96</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Set Endpoint</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>104</x>
-      <y>32</y>
-      <w>96</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Set Navigator</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>48</x>
-      <y>96</y>
-      <w>72</w>
-      <h>64</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;60.0;70.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>48</x>
-      <y>40</y>
-      <w>72</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;130.0;70.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>96</x>
-      <y>264</y>
-      <w>160</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Manage Application Size</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>48</x>
-      <y>136</y>
-      <w>64</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;60.0;180.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>992</x>
-      <y>496</y>
+      <x>1216</x>
+      <y>720</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -421,8 +15,8 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1096</x>
-      <y>520</y>
+      <x>1320</x>
+      <y>744</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -432,8 +26,8 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>992</x>
-      <y>552</y>
+      <x>1216</x>
+      <y>776</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -443,8 +37,8 @@ halign=left</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1040</x>
-      <y>512</y>
+      <x>1264</x>
+      <y>736</y>
       <w>72</w>
       <h>40</h>
     </coordinates>
@@ -457,8 +51,8 @@ m2=
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1040</x>
-      <y>528</y>
+      <x>1264</x>
+      <y>752</y>
       <w>72</w>
       <h>40</h>
     </coordinates>
@@ -467,5 +61,18 @@ m1=
 m2=
 </panel_attributes>
     <additional_attributes>70.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>400</x>
+      <y>152</y>
+      <w>136</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Dont use this, 
+Diagrams was moved 
+to other files</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
