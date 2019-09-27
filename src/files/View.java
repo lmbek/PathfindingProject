@@ -9,11 +9,13 @@ import javafx.stage.Stage;
 // This is the Root node of Application
 public class View extends Group {
     private final Stage stage;
-    private final UserInterface UI = new UserInterface(this);
+    private final UserInterface UI;
 
     View(Stage stage){
         this.stage = stage;
+        UI = new UserInterface(this);
         this.show();
+
     }
 
 
@@ -32,6 +34,10 @@ public class View extends Group {
 
     private void addUI(){
 
+    }
+
+    public Stage getStage(){
+        return this.stage;
     }
 
     public void setMaximized(Boolean bool){
