@@ -41,8 +41,8 @@ valign=center</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>90</y>
+      <x>550</x>
+      <y>80</y>
       <w>60</w>
       <h>40</h>
     </coordinates>
@@ -83,15 +83,15 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>120</y>
+      <y>110</y>
       <w>40</w>
-      <h>100</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
