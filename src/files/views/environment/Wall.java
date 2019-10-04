@@ -1,18 +1,17 @@
-package files.views.elements.drawables;
+package files.views.environment;
 
-import files.views.Drawables;
+import files.views.Environment;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-// Note: Not sure if we should use javafx.scene.shape.Rectangle or just make our own
-public class Rectangle extends javafx.scene.shape.Rectangle implements Drawables {
+public class Wall implements Environment {
     public int x,y,width,height;
     public int borderSize = 0;
     public Color borderColor;
     public Color bgColor;
 
 
-    public Rectangle (int x, int y, int width, int height, Color bgColor) {
+    public Wall (int x, int y, int width, int height, Color bgColor) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -20,7 +19,7 @@ public class Rectangle extends javafx.scene.shape.Rectangle implements Drawables
         this.bgColor = bgColor;
     }
 
-    public Rectangle (int x, int y, int width, int height, Color bgColor, Color borderColor, int borderSize) {
+    public Wall (int x, int y, int width, int height, Color bgColor, Color borderColor, int borderSize) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -30,7 +29,6 @@ public class Rectangle extends javafx.scene.shape.Rectangle implements Drawables
         this.borderSize = borderSize;
     }
 
-    @Override
     public void draw(GraphicsContext gc) {
         if(bgColor!=null) {
             gc.setFill(bgColor);
