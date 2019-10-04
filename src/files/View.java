@@ -24,7 +24,7 @@ public class View extends Group {
         this.stage.setTitle("Pathfinding Project"); // Add Title
 
         this.getChildren().add(UI);
-        this.stage.setScene(new Scene(this,400,300)); // Setup Scene
+        this.stage.setScene(new Scene(this,800,600)); // Setup Scene
         addUI();
     }
 

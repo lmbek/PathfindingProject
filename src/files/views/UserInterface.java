@@ -2,6 +2,7 @@ package files.views;
 
 import files.View;
 import files.views.userInterface.GeneratorButton;
+import files.views.userInterface.Graphics;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -41,23 +42,29 @@ public class UserInterface extends Group {
 
     private void addCanvas(){
         Stage stage = this.view.getStage();
+        //stage.show();
 
-        System.out.println(stage.getWidth());
-        // Create the Canvas
-        System.out.println((int)Math.round(stage.getWidth()));
-        Canvas canvas = new Canvas(stage.getWidth(), stage.getHeight());
+        System.out.println(stage.getWidth() + " Canvas");
+        // Create the Canvas, either values or use SetHeight/setWidth
+        Canvas canvas = new Canvas();
         //Canvas canvas = new Canvas(300, 300);
 
         // Set the width of the Canvas
+        //canvas.setWidth(400);
 
         // Set the height of the Canvas
-        canvas.setHeight(200);
+        //canvas.setHeight(400);
 
         // Get the graphics context of the canvas
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-
+        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        Graphics graphics = new Graphics();
         // Draw a Text
-        gc.strokeText("Hello Canvas", 150, 100);
+        graphicsContext.strokeText("Hello Canvas!!", 10, 100);
+
+        pane.setStyle("-fx-padding: 10;" +
+                "-fx-border-style: solid inside;" +
+                "-fx-border-width: 2;" +
+                "-fx-border-color: red;");
 
         pane.getChildren().add(canvas);
     }
