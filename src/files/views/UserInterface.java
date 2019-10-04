@@ -2,15 +2,12 @@ package files.views;
 
 import files.View;
 import files.views.userInterface.GeneratorButton;
+import files.views.userInterface.Graphic;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,23 +38,15 @@ public class UserInterface extends Group {
 
     private void addCanvas(){
         Stage stage = this.view.getStage();
-
-        System.out.println(stage.getWidth());
-        // Create the Canvas
         System.out.println((int)Math.round(stage.getWidth()));
-        Canvas canvas = new Canvas(stage.getWidth(), stage.getHeight());
-        //Canvas canvas = new Canvas(300, 300);
-
-        // Set the width of the Canvas
-
-        // Set the height of the Canvas
-        canvas.setHeight(200);
+        Canvas canvas = new Canvas(200, 200);
 
         // Get the graphics context of the canvas
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
+        Graphic graphic = new Graphic(gc);
         // Draw a Text
         gc.strokeText("Hello Canvas", 150, 100);
+
 
         pane.getChildren().add(canvas);
     }
