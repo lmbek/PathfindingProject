@@ -39,14 +39,12 @@ public class UserInterface extends Group {
     private void addCanvas(){
         Stage stage = this.view.getStage();
         System.out.println((int)Math.round(stage.getWidth()));
-        Canvas canvas = new Canvas(200, 200);
+        Canvas canvas = new Canvas(800, 600);
 
         // Get the graphics context of the canvas
         GraphicsContext gc = canvas.getGraphicsContext2D();
         Graphic graphic = new Graphic(gc);
-        // Draw a Text
-        gc.strokeText("Hello Canvas", 150, 100);
-
+        graphic.draw();
 
         pane.getChildren().add(canvas);
     }

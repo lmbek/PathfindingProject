@@ -15,10 +15,10 @@ public class Graphic {
 
     public Graphic(GraphicsContext graphicsContext){
         this.graphicsContext = graphicsContext;
-        Wall wall = new Wall(50,50,100,100,Color.BLACK);
+        Wall wall = new Wall(50,50,100,100,Color.VIOLET);
+        Wall wall2 = new Wall(250,40,50,150,Color.RED);
         environment.add(wall);
-
-        this.draw();
+        environment.add(wall2);
     }
 
     public void draw(){
