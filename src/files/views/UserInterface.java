@@ -24,7 +24,7 @@ public class UserInterface extends Group {
     public UserInterface(View view) {
         this.view = view;
         pane = new Pane();
-        pane.setStyle("-fx-background-color: lightblue");
+        //pane.setStyle("-fx-background-color: lightblue");
         this.getChildren().add(pane);
 
         addCanvas();
