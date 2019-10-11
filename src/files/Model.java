@@ -9,14 +9,23 @@ import files.models.Pathfinding;
  * It also handles logic and algorithms such as path finding
  */
 public class Model {
-    int tempVertices;
+    private int tempVertices;
+    private Graph graph;
 
     public Model(){
         Environment environment = new Environment();
         Pathfinding pathfinding = new Pathfinding();
-        Graph graph = new Graph(tempVertices);
 
+        graph = new Graph(6);
         graph.graphTest(6);
     }
 
+
+    public Graph getGraph() {
+        return graph;
+    }
+
+    public void setGraph(Graph graph) {
+        this.graph = graph;
+    }
 }

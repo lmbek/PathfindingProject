@@ -14,11 +14,6 @@ public class View extends Group {
     View(Stage stage){
         this.stage = stage;
         UI = new UserInterface(this);
-        this.show();
-
-    }
-
-    private void show(){
         this.stage.setTitle("Pathfinding Project"); // Add Title
 
         this.getChildren().add(UI);

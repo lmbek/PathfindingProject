@@ -4,8 +4,8 @@ import java.util.LinkedList;
 
 public class Graph {
 
-    int vertices;
-    LinkedList<Integer> adjListArray[];
+    public int vertices;
+    public LinkedList<Integer> adjListArray[];
 
     public Graph(int vertices) {
         this.vertices = vertices;
@@ -15,6 +15,7 @@ public class Graph {
             adjListArray[i] = new LinkedList<>();
 
         }
+
     }
 
 
@@ -45,6 +46,7 @@ public class Graph {
         graph.addEdge(graph, 3, 4);
         graph.addEdge(graph, 4, 5);
 
+        this.vertices=v;
         graph.printGraph(graph);
     }
 

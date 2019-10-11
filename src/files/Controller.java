@@ -1,6 +1,7 @@
 package files;
 
 import files.controllers.Input;
+import files.models.Graph;
 
 public class Controller {
     private final Model model;
@@ -11,5 +12,13 @@ public class Controller {
         this.model = model;
         this.view = view;
         this.input = new Input(model,view);
+        start();
+    }
+
+    // ON Start
+    private void start(){
+        Graph graph = model.getGraph();
+        view.getUI().getGraphic().setGraph(graph);
+        view.getUI().getGraphic().draw();
     }
 }

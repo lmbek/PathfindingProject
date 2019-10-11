@@ -20,6 +20,7 @@ public class UserInterface extends Group {
     private final ArrayList<Node> eventNodes = new ArrayList<>();
     private Pane pane;
     private View view;
+    private Graphic graphic;
 
     public UserInterface(View view) {
         this.view = view;
@@ -38,13 +39,13 @@ public class UserInterface extends Group {
 
     private void addCanvas(){
         Stage stage = this.view.getStage();
-        System.out.println((int)Math.round(stage.getWidth()));
+        //System.out.println((int)Math.round(stage.getWidth()));
         Canvas canvas = new Canvas(800, 600);
 
         // Get the graphics context of the canvas
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        Graphic graphic = new Graphic(gc);
-        graphic.draw();
+        graphic = new Graphic(gc);
+        getGraphic().draw();
 
         pane.getChildren().add(canvas);
     }
@@ -60,5 +61,9 @@ public class UserInterface extends Group {
         Text text = new Text(100,120,"Hello");
         text.setFont(Font.font("Verdana", 42));
         pane.getChildren().add(text);
+    }
+
+    public Graphic getGraphic() {
+        return graphic;
     }
 }
