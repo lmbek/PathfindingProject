@@ -1,6 +1,7 @@
 package files;
 
 import files.models.Environment;
+import files.models.Graph;
 import files.models.Pathfinding;
 
 /**
@@ -8,8 +9,14 @@ import files.models.Pathfinding;
  * It also handles logic and algorithms such as path finding
  */
 public class Model {
+    int tempVertices;
+
     public Model(){
         Environment environment = new Environment();
         Pathfinding pathfinding = new Pathfinding();
+        Graph graph = new Graph(tempVertices);
+
+        graph.graphTest(6);
     }
+
 }
