@@ -18,8 +18,6 @@ public class View extends Group {
 
     }
 
-
-    @SuppressWarnings("SpellCheckingInspection")
     private void show(){
         this.stage.setTitle("Pathfinding Project"); // Add Title
 
