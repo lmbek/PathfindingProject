@@ -21,5 +21,6 @@ public class Main extends Application {
         new Controller(new Model(), new View(stage));
         stage.show();
         // comment test2
+        // should not be able to commit this
     }
 }
