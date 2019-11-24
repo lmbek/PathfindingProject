@@ -1,10 +1,10 @@
-import files.Main;
+import files.Starter;
 import org.junit.jupiter.api.Test;
 
-class MainTest {
+class StarterTest {
 
-    MainTest(){
-        Main main = new Main();
+    StarterTest(){
+        Starter main = new Starter();
     }
 
     @Test

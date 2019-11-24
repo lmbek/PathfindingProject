@@ -10,7 +10,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class UserInterface extends Group {
     public UserInterface(View view) {
         this.view = view;
         pane = new Pane();
-        //pane.setStyle("-fx-background-color: lightblue");
+        pane.setStyle("-fx-background-color: lightblue");
         this.getChildren().add(pane);
 
         addCanvas();
@@ -38,7 +37,6 @@ public class UserInterface extends Group {
     }
 
     private void addCanvas(){
-        Stage stage = this.view.getStage();
         //System.out.println((int)Math.round(stage.getWidth()));
         Canvas canvas = new Canvas(800, 600);
 
