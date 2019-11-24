@@ -20,6 +20,6 @@ public class Main extends Application {
     @Override public void start(Stage stage) {
         new Controller(new Model(), new View(stage));
         stage.show();
-        // comment test
+        // comment test2
     }
 }
