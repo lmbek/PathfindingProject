@@ -29,8 +29,8 @@ public class Controller {
 
     // ON Start
     private void run(){
-        Graph graph = model.getGraph();
-        view.getUI().getGraphic().setGraph(graph);
-        view.getUI().getGraphic().draw();
+        //Graph graph = model.getGraph();
+        //view.getUI().getGraphic().setGraph(graph);
+        //view.getUI().getGraphic().draw();
     }
 }

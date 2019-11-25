@@ -22,10 +22,10 @@ public class Input {
 
     private void addEventListeners(ArrayList<Node> nodes){
         nodes.forEach((node)->{
-            String nodeName = node.getClass().getSimpleName();
+            String nodeName = node.getClass().getSimpleName().toLowerCase();
 
             switch(nodeName){
-                case "GeneratorButton":
+                case "button":
                     node.setOnMouseClicked(event -> {
                         System.out.println("fullscreen "+fullScreen);
                         fullScreen = !fullScreen;

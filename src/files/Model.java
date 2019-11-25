@@ -10,14 +10,12 @@ import files.models.Pathfinding;
  */
 public class Model {
     private static boolean created = false;
-    private int tempVertices;
     private Graph graph;
 
     public Model(){
         this.onlyOneInstance(); // Limit to only 1 instance of the Model class
         Environment environment = new Environment();
         Pathfinding pathfinding = new Pathfinding();
-
         //graph = new Graph(6);
         //graph.graphTest(6);
     }
@@ -32,12 +30,9 @@ public class Model {
         }
     }
 
-
-
     public Graph getGraph() {
         return graph;
     }
-
     public void setGraph(Graph graph) {
         this.graph = graph;
     }
