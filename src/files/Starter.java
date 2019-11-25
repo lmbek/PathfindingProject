@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 // Application setup and main file (start of program)
 // Model View Controller Design Pattern
-// This is the Main file (renamed to Controller)
+// This is the Main file (renamed to Starter)
 // The controller manages the interaction between input, model, logic and view.
 
 // Model - Data and Logic (Calculations and Path Finding) - Can be considered as a cook
@@ -19,12 +19,7 @@ public class Starter extends Application {
     // Initialize Application Scene
     public void start(Stage stage) {
         stage.setTitle("Pathfinding Project 2019");
-
-        // Model-View-Controller Architectural Pattern
-        Model model = new Model(); // Model logic seperated from the controller and view
-        View view = new View(stage); // View logic seperated from the controller and model
-        Controller controller = new Controller(model,view); // Controller is dependant on the model and view
-
+        new Controller(new Model(),new View(stage)); // Model-View-Controller Architectural Pattern
         stage.show(); // Show Stage
     }
 }

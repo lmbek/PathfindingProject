@@ -4,6 +4,7 @@ import files.views.UserInterface;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -16,16 +17,18 @@ public class View extends Group {
     private Stage stage;
 
     // Settings
-    private int sceneWidth = 640;
-    private int sceneHeight = 480;
-    private String viewFXMLLink = "View.fxml";
+    private int sceneWidth = 1280;
+    private int sceneHeight = 720;
+    private String viewFXMLLink = "views/view.fxml";
+    private String viewCSSLink = "views/view.css";
     private Node fxml;
 
 
     View(Stage stage){
         this.onlyOneInstance(); // Limit to only 1 instance of the Model class
         this.stage = stage;
-        this.setScene(stage);
+        this.loadFXML();
+        //this.loadCSS();
         UI = new UserInterface(this);
         this.getChildren().add(UI);
         addUI();
@@ -43,7 +46,9 @@ public class View extends Group {
 
     private void loadFXML(){
         try {
+            System.out.println("load");
             this.fxml = FXMLLoader.load(getClass().getResource(this.viewFXMLLink));
+            this.setScene(stage);
             this.convertFXMLToNodes();
         } catch (Exception exception){
             System.err.println(exception);
@@ -51,19 +56,29 @@ public class View extends Group {
             System.exit(0);
         }
     }
+/*
+    private void loadCSS(){
+        try {
+            this.css = FXMLLoader.load(getClass().getResource(this.viewCSSLink));
+            this.convertFXMLToNodes();
+        } catch (Exception exception){
+            System.err.println(exception);
+            System.err.println("CSS couldnt load...");
+            System.exit(0);
+        }
+    }
+
+ */
 
     private void convertFXMLToNodes(){
         try {
             /*
             selectFrom = (ComboBox) this.fxml.lookup("#selectFrom");
-            selectTo = (ComboBox) this.fxml.lookup("#selectTo");
-            selectTime = (ComboBox) this.fxml.lookup("#selectTime");
-            departure = (RadioButton) this.fxml.lookup("#departure");
-            arrival = (RadioButton) this.fxml.lookup("#arrival");
             button = (Button) this.fxml.lookup("#seeDepartures");
             tableView = (TableView) this.fxml.lookup("#tableView");
             message = (Label) this.fxml.lookup("#message");
             */
+            System.out.println("test");
         } catch(Exception exception){
             System.err.println(exception);
             System.err.println("Couldnt convert FXML to Nodes. Check if Type is correct.");
@@ -71,12 +86,8 @@ public class View extends Group {
         }
     }
 
-
     private void setScene(Stage stage){
-        ScrollPane scrollPane = new ScrollPane(); // ScrollPane
-        scrollPane.setContent(this.fxml);
-        scrollPane.setStyle("-fx-alignment: center");
-        stage.setScene(new Scene(scrollPane, sceneWidth, sceneHeight)); // Scene with ScrollPane
+        stage.setScene(new Scene((Parent)this.fxml, sceneWidth, sceneHeight)); // Scene with ScrollPane
     }
 
 
@@ -84,10 +95,7 @@ public class View extends Group {
         return UI;
     }
 
-    private void addUI(){
-
-    }
-
+    private void addUI(){ }
     public void setMaximized(Boolean bool){
         this.stage.setMaximized(bool);
     }
