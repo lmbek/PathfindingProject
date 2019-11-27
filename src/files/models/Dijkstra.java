@@ -37,18 +37,23 @@ public class Dijkstra {
         //Vertex startNode = graph.getVertex("J");
         //Vertex endNode = graph.getVertex("F");
 
-        Pair<Integer, Map<Vertex, Vertex>> results = dijkstra(startNode, endNode);
+        Vertex result = dijkstra(startNode, endNode);
         Vertex current = endNode;
         ArrayList<Vertex> Path = new ArrayList<>();
         Path.add(endNode);
 
-        /*
-        while ((current != startNode) && (results.getValue().get(current)!=null)) {
-            current=results.getValue().get(current);
-            Path.add(0,current);
+
+        while ((current != startNode) && (result.predecessor != null)) {
+            if (current == endNode) {
+                System.out.print(current.name);
+                //Path.add(0, current);
+            }
+            System.out.print("->");
+            System.out.print(current.predecessor.name);
+            current = current.predecessor;
         }
 
-        for(Vertex v : Path)
+        /*for(Vertex v : Path)
         {
             System.out.print( v.name);
             if (v!=endNode)
@@ -119,7 +124,7 @@ public class Dijkstra {
     ///////////////////////////////// TODO: Implement new dijkstra 25-11-2019 //////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
 
-    public Pair<Integer, Map<Vertex, Vertex>> dijkstra(Vertex startNode, Vertex endNode) {
+    public Vertex dijkstra(Vertex startNode, Vertex endNode) {
 
         TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingInt(Vertex::getDistance));
 
@@ -147,11 +152,8 @@ public class Dijkstra {
             //graphTreeSet.forEach((vertex -> System.out.print(vertex.name + ": " + vertex.distance + "   |")));
             graphTreeSet.remove(current);
         }
-        for (Vertex vertex : graph.getVertices()) {
-            if (vertex.predecessor!=null) System.out.println(vertex.name + "  ->  " + vertex.predecessor.name);
-        }
 
-        return null;
+        return endNode;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
