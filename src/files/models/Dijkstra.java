@@ -28,38 +28,32 @@ public class Dijkstra {
 
     public void startDijkstra() {
         // Create graph
-        graph = this.makeDijkstraGraph();
+        //graph = this.makeDijkstraGraph();
+        graph = this.makeSmallGraphB();
         // A
-        Vertex startNode = graph.getVertex("A");
-        Vertex endNode = graph.getVertex("E");
+        //Vertex startNode = graph.getVertex("A");
+        //Vertex endNode = graph.getVertex("E");
 
         // B
-        //Vertex startNode = graph.getVertex("J");
-        //Vertex endNode = graph.getVertex("F");
+        Vertex startNode = graph.getVertex("J");
+        Vertex endNode = graph.getVertex("F");
 
         Vertex result = dijkstra(startNode, endNode);
         Vertex current = endNode;
-        ArrayList<Vertex> Path = new ArrayList<>();
+        ArrayList<Vertex> Path= new ArrayList<>();
         Path.add(endNode);
 
-
-        while ((current != startNode) && (result.predecessor != null)) {
-            if (current == endNode) {
-                System.out.print(current.name);
-                //Path.add(0, current);
-            }
-            System.out.print("->");
-            System.out.print(current.predecessor.name);
-            current = current.predecessor;
+        while ((current != startNode) && (result.predecessor != null))
+        {
+            current=current.predecessor;
+            Path.add(0,current);
         }
-
-        /*for(Vertex v : Path)
+        for(Vertex v : Path)
         {
             System.out.print( v.name);
             if (v!=endNode)
                 System.out.print("->");
-        }*/
-
+        }
     }
 
     public Graph makeDijkstraGraph() {
@@ -137,92 +131,24 @@ public class Dijkstra {
         Vertex current;
 
         while (graphTreeSet.size() != 0) {
+            System.out.println(graphTreeSet.first().name+graphTreeSet.first().distance);
             current = graphTreeSet.first();
             System.out.println("  CURRENT:  " + current.name);
             for (Edge edge : current.edges) {
-                System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
-                        + "  dist:  " + (edge.distance + edge.getToVertex().distance));
-                if (edge.distance + current.distance < edge.getToVertex().distance) {
+                if (current.distance != infinity && edge.distance + current.distance < edge.getToVertex().distance) {
                     edge.getToVertex().setDistance(edge.distance + current.distance);
                     edge.getToVertex().setPredecessor(current);
                     graphTreeSet.remove(edge.getToVertex());
                     graphTreeSet.add(edge.getToVertex());
                 }
+                System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
+                        + "  dist:  " + edge.getToVertex().distance);
             }
             //graphTreeSet.forEach((vertex -> System.out.print(vertex.name + ": " + vertex.distance + "   |")));
             graphTreeSet.remove(current);
+            System.out.println("removed:  " +current.name);
         }
 
         return endNode;
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////
-/*
-        for(Vertex vertex: graph.getVertices()) {
-            distanceMap.put(vertex,infinity); // This is the nodes and their weight
-            predecessorMap.put(vertex, null); // we set the vertex to be null, which is meant to be "not visited"
-        }
-
-        Vertex from = startNode; // Set previous to be start node
-        Vertex next;
-
-        distanceMap.put(startNode,0); // Setting previous distance map to 0
-        predecessorMap.put(startNode,new Vertex("Start")); // Initialize the start as "coming from previous" (which at start is start)
-
-        while(graph.getVertices().size()!=0) {
-            System.out.println(from.name + " is having the weight of: " + distanceMap.get(from));
-            System.out.println("For: " + from.name + " {");
-            for(Edge edge : from.getEdges()) {
-                if(!edge.getToVertex().equals(from)){
-                    Vertex to = edge.getToVertex();
-                    System.out.print("\t From: " + from.name + " ");
-                    System.out.print("\t To: " + to.name + " ");
-                    System.out.print("\t Distance: " + edge.distance);
-                    System.out.println();
-                    weight = edge.distance+distanceMap.get(from);
-                    if (weight <= distanceMap.get(to)) {
-                        weight = edge.distance+distanceMap.get(from);
-                        distanceMap.put(to, weight); // Set the weight to distMap
-                        System.out.println("\t " + to.name + " is now: " + weight);
-                    } else {
-                        predecessorMap.remove(from); // Removing vertex
-                        System.out.println("\t removed " + from.name);
-                        // we are not setting a new previous here, the reason is that we instead had a loop that runs from the other vertices.
-                    }
-                }
-            }
-
-            next = findMin(from);
-            System.out.println("set "+next.name+" to "+from.name);
-            predecessorMap.put(next,from);
-            from = next;
-
-            if(next.equals(endNode)){
-                System.out.println("this is the end node!");
-                from = predecessorMap.get(null);
-            }
-
-        }
-
-        return (new Pair<Integer,Map<Vertex,Vertex>> (distanceMap.get(startNode), predecessorMap));
-    }
-
-    private Vertex findMin(Vertex vertex) {
-        Vertex closestVertex = null;
-        int lowestDistance = infinity;
-        for (Edge edge : vertex.getEdges()) {
-
-            if(!edge.getToVertex().equals(vertex)){
-                int distance = edge.distance;
-                if (edge.distance <= lowestDistance) {
-                    lowestDistance = distance;
-                    closestVertex = edge.getToVertex();
-                }
-            }
-        }
-        return closestVertex;
-    }
-    */
-
-
 }
