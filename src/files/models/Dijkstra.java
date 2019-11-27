@@ -14,12 +14,11 @@ public class Dijkstra {
 
     int counter = 0;
 
-    Map<Vertex,Vertex> predecessorMap= new HashMap<>(); // The key is a vertex, the value is the previous vertex
-    Map<Vertex,Integer> distanceMap=new HashMap<>(); // The key is a vertex, the value is the shortest distance to it
-    int infinity = (int)Double.POSITIVE_INFINITY;
+    Map<Vertex, Vertex> predecessorMap = new HashMap<>(); // The key is a vertex, the value is the previous vertex
+    Map<Vertex, Integer> distanceMap = new HashMap<>(); // The key is a vertex, the value is the shortest distance to it
+    int infinity = (int) Double.POSITIVE_INFINITY;
     int minimum = infinity;
     int weight = infinity;
-
 
 
     public static void main(String[] args) {
@@ -27,7 +26,7 @@ public class Dijkstra {
         dijkstra.startDijkstra();
     }
 
-    public void startDijkstra(){
+    public void startDijkstra() {
         // Create graph
         graph = this.makeDijkstraGraph();
         // A
@@ -40,7 +39,7 @@ public class Dijkstra {
 
         Pair<Integer, Map<Vertex, Vertex>> results = dijkstra(startNode, endNode);
         Vertex current = endNode;
-        ArrayList<Vertex> Path= new ArrayList<>();
+        ArrayList<Vertex> Path = new ArrayList<>();
         Path.add(endNode);
 
         /*
@@ -66,21 +65,21 @@ public class Dijkstra {
         final Vertex D = dijkstraGraph.addVertex("D");
         final Vertex E = dijkstraGraph.addVertex("E");
 
-        dijkstraGraph.newEdge(A,B, 5,  3);
-        dijkstraGraph.newEdge(A,C, 10,  3);
-        dijkstraGraph.newEdge(B,C, 3,  3);
-        dijkstraGraph.newEdge(B,D, 2,  3);
-        dijkstraGraph.newEdge(B,E, 9,  3);
-        dijkstraGraph.newEdge(C,B, 2,  3);
-        dijkstraGraph.newEdge(C,E, 1,  3);
-        dijkstraGraph.newEdge(D,E, 6,  3);
-        dijkstraGraph.newEdge(E,D, 4,  3);
+        dijkstraGraph.newEdge(A, B, 5, 3);
+        dijkstraGraph.newEdge(A, C, 10, 3);
+        dijkstraGraph.newEdge(B, C, 3, 3);
+        dijkstraGraph.newEdge(B, D, 2, 3);
+        dijkstraGraph.newEdge(B, E, 9, 3);
+        dijkstraGraph.newEdge(C, B, 2, 3);
+        dijkstraGraph.newEdge(C, E, 1, 3);
+        dijkstraGraph.newEdge(D, E, 6, 3);
+        dijkstraGraph.newEdge(E, D, 4, 3);
 
         return dijkstraGraph;
     }
 
     public Graph makeSmallGraphB() {
-        Graph myGraph= new Graph();
+        Graph myGraph = new Graph();
         final Vertex A = myGraph.addVertex("A");
         final Vertex B = myGraph.addVertex("B");
         final Vertex C = myGraph.addVertex("C");
@@ -92,26 +91,26 @@ public class Dijkstra {
         final Vertex I = myGraph.addVertex("I");
         final Vertex J = myGraph.addVertex("J");
 
-        myGraph.newEdge(A,B,10,0);
-        myGraph.newEdge(A,D,20,0);
-        myGraph.newEdge(A,E,20,0);
-        myGraph.newEdge(A,F,5,0);
-        myGraph.newEdge(A,G,15,0);
-        myGraph.newEdge(B,C,7,0);
-        myGraph.newEdge(B,D,10,0);
-        myGraph.newEdge(C,B,15,0);
-        myGraph.newEdge(C,D,5,0);
-        myGraph.newEdge(D,E,10,0);
-        myGraph.newEdge(E,F,5,0);
-        myGraph.newEdge(G,F,10,0);
-        myGraph.newEdge(H,A,5,0);
-        myGraph.newEdge(H,B,20,0);
-        myGraph.newEdge(H,G,5,0);
-        myGraph.newEdge(I,B,15,0);
-        myGraph.newEdge(I,H,20,0);
-        myGraph.newEdge(I,J,10,0);
-        myGraph.newEdge(J,B,5,0);
-        myGraph.newEdge(J,C,15,0);
+        myGraph.newEdge(A, B, 10, 0);
+        myGraph.newEdge(A, D, 20, 0);
+        myGraph.newEdge(A, E, 20, 0);
+        myGraph.newEdge(A, F, 5, 0);
+        myGraph.newEdge(A, G, 15, 0);
+        myGraph.newEdge(B, C, 7, 0);
+        myGraph.newEdge(B, D, 10, 0);
+        myGraph.newEdge(C, B, 15, 0);
+        myGraph.newEdge(C, D, 5, 0);
+        myGraph.newEdge(D, E, 10, 0);
+        myGraph.newEdge(E, F, 5, 0);
+        myGraph.newEdge(G, F, 10, 0);
+        myGraph.newEdge(H, A, 5, 0);
+        myGraph.newEdge(H, B, 20, 0);
+        myGraph.newEdge(H, G, 5, 0);
+        myGraph.newEdge(I, B, 15, 0);
+        myGraph.newEdge(I, H, 20, 0);
+        myGraph.newEdge(I, J, 10, 0);
+        myGraph.newEdge(J, B, 5, 0);
+        myGraph.newEdge(J, C, 15, 0);
 
         return myGraph;
     }
@@ -120,33 +119,42 @@ public class Dijkstra {
     ///////////////////////////////// TODO: Implement new dijkstra 25-11-2019 //////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
 
-    public Pair<Integer, Map<Vertex,Vertex>> dijkstra(Vertex startNode, Vertex endNode) {
+    public Pair<Integer, Map<Vertex, Vertex>> dijkstra(Vertex startNode, Vertex endNode) {
 
         TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingInt(Vertex::getDistance));
 
-        for(Vertex vertex: graph.getVertices()) {
+        for (Vertex vertex : graph.getVertices()) {
             vertex.setDistance(infinity);
             vertex.setPredecessor(null);
         }
         startNode.setDistance(0);
-        for(Vertex vertex: graph.getVertices()) {
-            graphTreeSet.add(vertex);
-            System.out.println("added ");
-        }
         graphTreeSet.addAll(graph.getVertices());
+        Vertex current;
 
-
-        //graphTreeSet.forEach((vertex -> System.out.print(vertex.name + ": " + vertex.distance + "   |")));
-
-        //startNode.setDistance(0);
-        //graphTreeSet.add(startNode);
-
-        graphTreeSet.forEach((vertex -> System.out.println(vertex.name + vertex.distance)));
+        while (graphTreeSet.size() != 0) {
+            current = graphTreeSet.first();
+            System.out.println("  CURRENT:  " + current.name);
+            for (Edge edge : current.edges) {
+                System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
+                        + "  dist:  " + (edge.distance + edge.getToVertex().distance));
+                if (edge.distance + current.distance < edge.getToVertex().distance) {
+                    edge.getToVertex().setDistance(edge.distance + current.distance);
+                    edge.getToVertex().setPredecessor(current);
+                    graphTreeSet.remove(edge.getToVertex());
+                    graphTreeSet.add(edge.getToVertex());
+                }
+            }
+            //graphTreeSet.forEach((vertex -> System.out.print(vertex.name + ": " + vertex.distance + "   |")));
+            graphTreeSet.remove(current);
+        }
+        for (Vertex vertex : graph.getVertices()) {
+            if (vertex.predecessor!=null) System.out.println(vertex.name + "  ->  " + vertex.predecessor.name);
+        }
 
         return null;
     }
 
-        //////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 /*
         for(Vertex vertex: graph.getVertices()) {
             distanceMap.put(vertex,infinity); // This is the nodes and their weight
