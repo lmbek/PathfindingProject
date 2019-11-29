@@ -1,4 +1,4 @@
-package files.views.userInterface;
+package files.views;
 
 import files.models.Graph;
 import files.views.Environment;
@@ -21,12 +21,20 @@ public class Graphic {
 
     public Graphic(GraphicsContext graphicsContext){
         this.graphicsContext = graphicsContext;
-        Wall wall = new Wall(50,50,100,100,Color.VIOLET);
-        Wall wall2 = new Wall(250,40,50,150,Color.RED);
+        this.insertHardcodedData();
+    }
+
+    public void insertHardcodedData(){
+        Wall wall = new Wall(50,50,100,100,Color.DARKGREY,Color.BLACK, 3);
+        Wall wall2 = new Wall(250,40,50,150,Color.DARKGREY, Color.BLACK, 3);
 
 
         environment.add(wall);
         environment.add(wall2);
+
+    }
+
+    public void convertToGraphics(){
 
     }
 

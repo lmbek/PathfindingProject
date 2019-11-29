@@ -1,4 +1,4 @@
-package files.views.userInterface;
+package files.views;
 
 public class GeneratorButton extends javafx.scene.control.Button {
     public GeneratorButton(){
