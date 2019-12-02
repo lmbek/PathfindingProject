@@ -1,7 +1,10 @@
 package files;
 
 import files.controllers.Input;
-import files.models.Graph;
+import files.interfaces.Geometry;
+import files.models.Shape;
+
+import java.util.ArrayList;
 
 public class Controller {
     private static boolean created = false;
@@ -37,6 +40,8 @@ public class Controller {
 
     private void updateView(){
         // TODO: Insert Environment
+        ArrayList<Shape> shapes = model.getEnvironment().getShapes();
+        //view.setEnvironment();
     }
 
     private void updateModel(){

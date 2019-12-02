@@ -1,6 +1,6 @@
 package files.views.environment;
 
-import files.views.Environment;
+import files.interfaces.Environment;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
