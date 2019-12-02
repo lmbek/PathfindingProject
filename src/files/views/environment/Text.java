@@ -1,6 +1,7 @@
 package files.views.environment;
 
 import files.interfaces.Environment;
+import files.models.shapes.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -51,5 +52,10 @@ public class Text implements Environment {
         gc.fillText(text, x, y);
 
 
+    }
+
+    @Override
+    public boolean isColliding(Point point) {
+        return false;
     }
 }

@@ -2,6 +2,7 @@ package files.models.shapes;
 
 import files.interfaces.Geometry;
 import files.models.Shape;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Line2D extends Shape {
     private Point start;
@@ -22,5 +23,10 @@ public class Line2D extends Shape {
 
     public boolean isColliding(Point point){
         return point.isOnLine(this);
+    }
+
+    @Override
+    public void draw(GraphicsContext graphicsContext) {
+
     }
 }

@@ -1,6 +1,7 @@
 package files.models.shapes;
 import files.interfaces.Geometry;
 import files.models.Shape;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Rectangle2D extends Shape {
     private Point A, B, C, D;
@@ -28,5 +29,10 @@ public class Rectangle2D extends Shape {
 
     public boolean isColliding(Point obj) {
         return firstHalf.isColliding(obj) || secondHalf.isColliding(obj);
+    }
+
+    @Override
+    public void draw(GraphicsContext graphicsContext) {
+
     }
 }

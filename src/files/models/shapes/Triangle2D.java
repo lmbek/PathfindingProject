@@ -1,6 +1,7 @@
 package files.models.shapes;
 
 import files.models.Shape;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Triangle2D extends Shape {
     private Point A, B, C;
@@ -43,5 +44,10 @@ public class Triangle2D extends Shape {
         } else {
             return point.isLeftOfLine(a) && point.isLeftOfLine(b) && point.isLeftOfLine(c);
         }
+    }
+
+    @Override
+    public void draw(GraphicsContext graphicsContext) {
+
     }
 }

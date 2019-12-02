@@ -35,12 +35,17 @@ public class Controller {
     private void run(){
         //Graph graph = model.getGraph();
         //view.getUI().getGraphic().setGraph(graph);
-        //view.getUI().getGraphic().draw();
+        view.getUI().getGraphic().draw();
     }
 
     private void updateView(){
         // TODO: Insert Environment
         ArrayList<Shape> shapes = model.getEnvironment().getShapes();
+        System.out.println(shapes.size());
+        view.getUI().getGraphic().setEnvironment(shapes);
+
+        run();
+
         //view.setEnvironment();
     }
 

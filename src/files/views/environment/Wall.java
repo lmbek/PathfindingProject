@@ -1,6 +1,7 @@
 package files.views.environment;
 
 import files.interfaces.Environment;
+import files.models.shapes.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -41,5 +42,10 @@ public class Wall implements Environment {
             gc.strokeRect(x,y,width,height);
             gc.setStroke(borderColor);
         }
+    }
+
+    @Override
+    public boolean isColliding(Point point) {
+        return false;
     }
 }

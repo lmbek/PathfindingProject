@@ -1,5 +1,6 @@
 package files.views.environment;
 import files.interfaces.Environment;
+import files.models.shapes.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -43,5 +44,10 @@ public class Circle implements Environment {
             gc.strokeOval(x,y,radius,radius);
             gc.setStroke(borderColor);
         }
+    }
+
+    @Override
+    public boolean isColliding(Point point) {
+        return false;
     }
 }
