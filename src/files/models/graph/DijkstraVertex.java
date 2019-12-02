@@ -2,12 +2,12 @@ package files.models.graph;
 
 import java.util.ArrayList;
 
-public class Vertex {
+public class DijkstraVertex{
     public String name;
     public int distance;
-    public Vertex predecessor;
+    public DijkstraVertex predecessor;
     public ArrayList<Edge> edges = new ArrayList<>();
-    public Vertex(String name){
+    public DijkstraVertex(String name){
         this.name = name;
     }
     public void addEdge(Edge edge){
@@ -18,10 +18,8 @@ public class Vertex {
     }
     public int getDistance() { return distance; }
     public void setDistance(int distance) { this.distance = distance; }
-    public Vertex getPredecessor() { return predecessor; }
-    public void setPredecessor(Vertex predecessor) { this.predecessor = predecessor; }
+    public DijkstraVertex getPredecessor() { return predecessor; }
+    public void setPredecessor(DijkstraVertex predecessor) { this.predecessor = predecessor; }
 
-    public long f;
-    public void setF(long f) { this.f = f; }
-    public long getF() { return f; }
+
 }
