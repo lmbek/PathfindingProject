@@ -1,94 +1,149 @@
 package files.models;
 
-import javafx.scene.shape.TriangleMesh;
-
 import java.util.ArrayList;
 
 public class Environment {
     ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
 
     public void addRectangle(){
-        rectangles.add();
+        rectangles.add(new Rectangle(100,100,150,150));
     }
 }
 
 
 
 class Rectangle {
-    Vector position;
-    Vector size;
+    Point position;
+    Point size;
+    Triangle firstHalf;
+    Triangle secondHalf;
 
     Rectangle (double x, double y, double width, double height){
-        this.position = new Vector(x,y);
-        this.size = new Vector(width, height);
+        firstHalf = new Triangle(new Point(x,y),new Point(x+width,y),new Point(x,y+height));
+        secondHalf = new Triangle(new Point(x+width,y+height),new Point(x+width,y),new Point(x,y+height));
+
+        this.position = new Point(x,y);
+        this.size = new Point(width, height);
     }
 }
 
 class Triangle {
-    Line a, b, c;
+    private Point A, B, C;
+    private Line a, b, c;
+    private boolean clockwise;
 
-    Triangle (Line a, Line b, Line c){
-        this.a = a;
-        this.b = b;
-        this.c = c;
+    Triangle (Point A, Point B, Point C){
+        this.A = A;
+        this.B = B;
+        this.C = C;
+        a = new Line(B,C);
+        b = new Line(C,A);
+        c = new Line(A,B);
+
+        if(A.isLeftOfLine(a) && B.isLeftOfLine(b) && C.isLeftOfLine(c)){ // We use A, as we only need to use one of the 3 points
+            clockwise = false;
+        } else if(A.isRightOfLine(a) && B.isRightOfLine(b) && C.isRightOfLine(c)){
+            clockwise = true;
+        } else {
+            System.out.println("Warning: Triangle might be a line");
+        }
+
     }
 
-    boolean isColliding (){
-        if(){
+    public static void main(String[] args) {
+        Triangle triangle = new Triangle(new Point(100,100),new Point(50,200),new Point(150,200));
+        System.out.println("clockwise: "+triangle.clockwise);
+        Point obj = new Point(100,150);
+        System.out.println("obj colliding: "+triangle.isColliding(obj));
+    }
 
+    boolean isColliding (Point obj){
+        if(clockwise) {
+            if (obj.isRightOfLine(a) && obj.isRightOfLine(b) && obj.isRightOfLine(c)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (obj.isLeftOfLine(a) && obj.isLeftOfLine(b) && obj.isLeftOfLine(c)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
 
 class Line {
-    Vector p1, p2;
+    private Point start;
+    private Point end;
 
-    Line (Vector p1, Vector p2){
-        this.p1 = p1;
-        this.p2 = p2;
+    Line (Point start, Point end){
+        this.start = start;
+        this.end = end;
     }
 
-    boolean isLeftOfLine(Vector point){
-        if(0 < (point.getX()-p1.getX())*(p2.getY()-p1.getY())-(point.getY()-p1.getY())*(p2.getX()-p1.getX()) ){
-            return true;
-        } else return false;
+    public Point getStart() {
+        return start;
     }
-
-    boolean isRightOfLine(Vector point){
-        if(0 > (point.getX()-p1.getX())*(p2.getY()-p1.getY())-(point.getY()-p1.getY())*(p2.getX()-p1.getX()) ){
-            return true;
-        } else return false;
+    public Point getEnd() {
+        return end;
     }
-
-    boolean isExactlyOnLine(Vector point){
-        if(0 == (point.getX()-p1.getX())*(p2.getY()-p1.getY())-(point.getY()-p1.getY())*(p2.getX()-p1.getX()) ) {
-            return true;
-        } else return false;
-    }
-
 }
 
-class Vector {
+class Point {
     private double x, y, z;
 
-    Vector(double x){
+    Point(double x){
         this(x,0,0);
     }
 
-    Vector(double x, double y){
+    Point(double x, double y){
         this(x,y,0);
     }
 
-    Vector(double x, double y, double z){
+    Point(double x, double y, double z){
         this.x = x;
         this.y = y;
-        this.y = z;
+        this.z = z;
+    }
+
+    int calcRelation(Line line){
+        // Will return greater than 0 if point is left of line
+        // Will return 0 if point is on the line
+        // Will return left than 0 if point is right of line
+        // Formula: d=(x−x1)(y2−y1)−(y−y1)(x2−x1)
+        // we use d as result, we use x as point.getX(), we use y as point.getY(),
+        // we use x1 as start.getX(), we use y1 as start.getY(), we use x2 as end.getX(), and we use y2 as end.getY()
+        double result = (x-line.getStart().getX())*(line.getEnd().getY()-line.getStart().getY())-(y-line.getStart().getY())*(line.getEnd().getX()-line.getStart().getX());
+        if(0 < result){
+            return -1;
+        } else if(0 > result){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    boolean isLeftOfLine(Line line){
+        if(0<calcRelation(line)) return true; // if the calculation is positive, the point is on the left side of the line
+        else return false;
+    }
+
+    boolean isOnLine(Line line){
+        if(0==calcRelation(line)) return true; // if the calculation is zero, the point is on the line
+        else return false;
+    }
+
+    boolean isRightOfLine(Line line){
+        // Our Choice: This is the only important check, as we chose to use this continiously for collision detection in objects
+        if(0>calcRelation(line)) return true; // if the calculation is negative, the point is on the right side of the line
+        else return false;
     }
 
     public double getX(){
         return x;
     }
-
     public double getY(){
         return y;
     }
