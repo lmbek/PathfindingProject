@@ -1,9 +1,8 @@
-package files.views.userInterface;
+package files.views;
 
 import files.models.Graph;
-import files.views.Environment;
+import files.interfaces.Environment;
 import files.views.environment.Circle;
-import files.views.environment.Line;
 import files.views.environment.Text;
 import files.views.environment.Wall;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,7 +10,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 // TODO: remove this.draw() from Graphic constructor, implement Environment on Graphic class and use the draw method in View or UI
 public class Graphic {
@@ -21,12 +19,20 @@ public class Graphic {
 
     public Graphic(GraphicsContext graphicsContext){
         this.graphicsContext = graphicsContext;
-        Wall wall = new Wall(50,50,100,100,Color.VIOLET);
-        Wall wall2 = new Wall(250,40,50,150,Color.RED);
+        this.insertHardcodedData();
+    }
+
+    public void insertHardcodedData(){
+        Wall wall = new Wall(50,50,100,100,Color.DARKGREY,Color.BLACK, 3);
+        Wall wall2 = new Wall(250,40,50,150,Color.DARKGREY, Color.BLACK, 3);
 
 
         environment.add(wall);
         environment.add(wall2);
+
+    }
+
+    public void convertToGraphics(){
 
     }
 

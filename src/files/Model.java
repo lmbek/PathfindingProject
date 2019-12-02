@@ -11,11 +11,13 @@ import files.models.Pathfinding;
 public class Model {
     private static boolean created = false;
     private Graph graph;
+    private Environment environment;
+    private Pathfinding pathfinding;
 
     public Model(){
         this.onlyOneInstance(); // Limit to only 1 instance of the Model class
-        Environment environment = new Environment();
-        Pathfinding pathfinding = new Pathfinding();
+        environment = new Environment();
+        pathfinding = new Pathfinding();
         //graph = new Graph(6);
         //graph.graphTest(6);
     }
@@ -35,5 +37,9 @@ public class Model {
     }
     public void setGraph(Graph graph) {
         this.graph = graph;
+    }
+
+    public Environment getEnvironment() {
+        return environment;
     }
 }
