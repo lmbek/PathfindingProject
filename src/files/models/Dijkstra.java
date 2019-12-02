@@ -1,24 +1,15 @@
 package files.models;
 
-import files.models.graph.DijkstraVertex;
 import files.models.graph.Edge;
 import files.models.graph.Vertex;
-import javafx.util.Pair;
 
 import java.util.*;
 
 public class Dijkstra {
 
-
     private Graph graph;
 
-    int counter = 0;
-
-    Map<Vertex, Vertex> predecessorMap = new HashMap<>(); // The key is a vertex, the value is the previous vertex
-    Map<Vertex, Integer> distanceMap = new HashMap<>(); // The key is a vertex, the value is the shortest distance to it
     int infinity = (int) Double.POSITIVE_INFINITY;
-    int minimum = infinity;
-    int weight = infinity;
 
 
     public static void main(String[] args) {
@@ -38,44 +29,16 @@ public class Dijkstra {
         Vertex startNode = graph.getVertex("J");
         Vertex endNode = graph.getVertex("F");
 
-        Vertex result = dijkstra(startNode, endNode);
-        Vertex current = endNode;
-        ArrayList<Vertex> Path= new ArrayList<>();
-        Path.add(endNode);
+        ArrayList<Vertex> result = dijkstra(startNode, endNode);
 
-        while ((current != startNode) && (result.predecessor != null))
-        {
-            current=current.predecessor;
-            Path.add(0,current);
-        }
-        for(Vertex v : Path)
-        {
-            System.out.print( v.name);
+        for(Vertex v : result) {
+            System.out.print( v.name + " Dist:" + v.distance + " ");
             if (v!=endNode)
-                System.out.print("->");
+                System.out.print("-> ");
         }
+
     }
 
-    public Graph makeDijkstraGraph() {
-        Graph dijkstraGraph = new Graph();
-        final Vertex A = dijkstraGraph.addVertex("A");
-        final Vertex B = dijkstraGraph.addVertex("B");
-        final Vertex C = dijkstraGraph.addVertex("C");
-        final Vertex D = dijkstraGraph.addVertex("D");
-        final Vertex E = dijkstraGraph.addVertex("E");
-
-        dijkstraGraph.newEdge(A, B, 5, 3);
-        dijkstraGraph.newEdge(A, C, 10, 3);
-        dijkstraGraph.newEdge(B, C, 3, 3);
-        dijkstraGraph.newEdge(B, D, 2, 3);
-        dijkstraGraph.newEdge(B, E, 9, 3);
-        dijkstraGraph.newEdge(C, B, 2, 3);
-        dijkstraGraph.newEdge(C, E, 1, 3);
-        dijkstraGraph.newEdge(D, E, 6, 3);
-        dijkstraGraph.newEdge(E, D, 4, 3);
-
-        return dijkstraGraph;
-    }
 
     public Graph makeSmallGraphB() {
         Graph myGraph = new Graph();
@@ -118,7 +81,7 @@ public class Dijkstra {
     ///////////////////////////////// TODO: Implement new dijkstra 25-11-2019 //////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
 
-    public Vertex dijkstra(Vertex startNode, Vertex endNode) {
+    public ArrayList<Vertex> dijkstra(Vertex startNode, Vertex endNode) {
 
         TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingInt(Vertex::getDistance));
 
@@ -131,24 +94,34 @@ public class Dijkstra {
         Vertex current;
 
         while (graphTreeSet.size() != 0) {
-            System.out.println(graphTreeSet.first().name+graphTreeSet.first().distance);
             current = graphTreeSet.first();
             System.out.println("  CURRENT:  " + current.name);
+
             for (Edge edge : current.edges) {
+
                 if (current.distance != infinity && edge.distance + current.distance < edge.getToVertex().distance) {
                     edge.getToVertex().setDistance(edge.distance + current.distance);
                     edge.getToVertex().setPredecessor(current);
                     graphTreeSet.remove(edge.getToVertex());
                     graphTreeSet.add(edge.getToVertex());
                 }
+
                 System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
                         + "  dist:  " + edge.getToVertex().distance);
             }
-            //graphTreeSet.forEach((vertex -> System.out.print(vertex.name + ": " + vertex.distance + "   |")));
+
             graphTreeSet.remove(current);
             System.out.println("removed:  " +current.name);
         }
 
-        return endNode;
+        Vertex resultCurrent = endNode;
+        ArrayList<Vertex> Path= new ArrayList<>();
+        Path.add(endNode);
+
+        while ((resultCurrent != startNode) && (resultCurrent.predecessor != null)) {
+            resultCurrent = resultCurrent.predecessor;
+            Path.add(0,resultCurrent);
+        }
+        return Path;
     }
 }

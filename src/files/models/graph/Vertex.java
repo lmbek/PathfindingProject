@@ -20,4 +20,8 @@ public class Vertex {
     public void setDistance(int distance) { this.distance = distance; }
     public Vertex getPredecessor() { return predecessor; }
     public void setPredecessor(Vertex predecessor) { this.predecessor = predecessor; }
+
+    public long f;
+    public void setF(long f) { this.f = f; }
+    public long getF() { return f; }
 }
