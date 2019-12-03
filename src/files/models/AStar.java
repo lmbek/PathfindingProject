@@ -23,7 +23,7 @@ public class AStar {
         graph = this.makeSmallGraphA();
         // A
         Vertex startNode = graph.getVertex("A");
-        Vertex endNode = graph.getVertex("F");
+        Vertex endNode = graph.getVertex("E");
 
         // B
         //Vertex startNode = graph.getVertex("J");
@@ -69,6 +69,7 @@ public class AStar {
         openTreeSet.add(startNode);
         Vertex current;
 
+        loop:
         while (openTreeSet.size() != 0) {
             current = openTreeSet.first();
             System.out.println(current.name + " " + current.distance);
@@ -83,6 +84,7 @@ public class AStar {
 
                 if (successor == endNode){
                     System.out.println("solution found" + current.name + endNode.name);
+                    break loop;
                 }
 
                 if (openTreeSet.contains(successor) && successorF < successor.f){
