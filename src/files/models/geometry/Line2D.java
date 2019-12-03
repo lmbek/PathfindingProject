@@ -1,10 +1,11 @@
-package files.models.shapes;
+package files.models.geometry;
 
-import files.interfaces.Geometry;
+import files.interfaces.Environment;
 import files.models.Shape;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
-public class Line2D extends Shape {
+public class Line2D extends Shape implements Environment {
     private Point start;
     private Point end;
 
@@ -26,7 +27,12 @@ public class Line2D extends Shape {
     }
 
     @Override
-    public void draw(GraphicsContext graphicsContext) {
-
+    public void draw(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+        gc.setStroke(Color.BLACK);
+        gc.beginPath();
+        gc.moveTo(start.getX(),start.getY());
+        gc.lineTo(end.getX(),end.getY());
+        gc.stroke();
     }
 }

@@ -1,9 +1,11 @@
-package files.models.shapes;
+package files.models.geometry;
 
+import files.interfaces.Environment;
 import files.models.Shape;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
-public class Triangle2D extends Shape {
+public class Triangle2D extends Shape implements Environment {
     private Point A, B, C;
     private Line2D a, b, c;
     private boolean clockwise;
@@ -32,7 +34,7 @@ public class Triangle2D extends Shape {
         Point obj = new Point(100, 150);
         System.out.println("obj colliding: " + triangle.isColliding(obj));
 
-        Rectangle2D rectangle = new Rectangle2D(50,50,100,100);
+        Rectangle2D rectangle = new Rectangle2D(50,50,100,100, Color.BLACK);
         Point obj2 = new Point(75,75);
         rectangle.isColliding(obj2);
         System.out.println("obj2 colliding: "+rectangle.isColliding(obj2));

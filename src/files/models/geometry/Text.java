@@ -1,7 +1,6 @@
-package files.views.environment;
+package files.models.geometry;
 
 import files.interfaces.Environment;
-import files.models.shapes.Point;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

@@ -1,6 +1,8 @@
 package files.models;
 
-import files.models.shapes.Rectangle2D;
+import files.models.geometry.Rectangle2D;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 public class Environment {
@@ -15,8 +17,13 @@ public class Environment {
     }
 
     public void addShapes() {
-        shapes.add(new Rectangle2D(50, 50, 20, 50));
-        shapes.add(new Rectangle2D(350, 50, 15, 150));
+        for(int i=0; i<100; i++){
+            //for(int j=0; j< shapes.size();j++){
+                //if(shapes.get(i).isColliding()) {
+                    shapes.add(new Rectangle2D(Math.round(Math.random() * 600), Math.round(Math.random() * 600), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Color.DARKGREY, Color.BLACK, 3));
+                //}
+            //}
+        }
     }
 
     public ArrayList<Shape> getShapes(){

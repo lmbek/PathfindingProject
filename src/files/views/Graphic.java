@@ -1,11 +1,10 @@
 package files.views;
 
 import files.models.Graph;
-import files.interfaces.Environment;
 import files.models.Shape;
-import files.views.environment.Circle;
-import files.views.environment.Text;
-import files.views.environment.Wall;
+import files.models.geometry.Circle;
+import files.models.geometry.Text;
+import files.models.geometry.Wall;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
@@ -58,7 +57,7 @@ public class Graphic {
 
         System.out.println("test");
         for (int i = 0; i < environment.size(); i++) {
-            System.out.println(i);
+            System.out.println("lars: "+i);
             environment.get(i).draw(this.graphicsContext); // Draw all the graphics
             //System.out.println(environment.get(i).getClass().getSimpleName());
         }

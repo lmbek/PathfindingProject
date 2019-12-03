@@ -1,20 +1,12 @@
-package files.models.shapes;
+package files.models.geometry;
 
-public class Point {
-    private double x, y, z;
-
-    Point(double x) {
-        this(x, 0, 0);
+public class Point extends Vector {
+    public Point(double x, double y) {
+        super(x, y);
     }
 
-    Point(double x, double y) {
-        this(x, y, 0);
-    }
-
-    Point(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Point(double x, double y, double z) {
+        super(x, y, z);
     }
 
     int calcRelation(Line2D line) {
@@ -24,7 +16,7 @@ public class Point {
         // Formula: d=(x−x1)(y2−y1)−(y−y1)(x2−x1)
         // we use d as result, we use x as point.getX(), we use y as point.getY(),
         // we use x1 as start.getX(), we use y1 as start.getY(), we use x2 as end.getX(), and we use y2 as end.getY()
-        double result = (x - line.getStart().getX()) * (line.getEnd().getY() - line.getStart().getY()) - (y - line.getStart().getY()) * (line.getEnd().getX() - line.getStart().getX());
+        double result = (super.getX() - line.getStart().getX()) * (line.getEnd().getY() - line.getStart().getY()) - (super.getY() - line.getStart().getY()) * (line.getEnd().getX() - line.getStart().getX());
         if (0 < result) {
             return -1;
         } else if (0 > result) {
@@ -53,10 +45,10 @@ public class Point {
     }
 
     public double getX() {
-        return x;
+        return super.getX();
     }
 
     public double getY() {
-        return y;
+        return super.getY();
     }
 }

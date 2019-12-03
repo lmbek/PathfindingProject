@@ -1,6 +1,6 @@
-package files.views.environment;
+package files.models.geometry;
 import files.interfaces.Environment;
-import files.models.shapes.Point;
+import files.models.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
  *************/
 
 
-public class Circle implements Environment {
+public class Circle extends Shape implements Environment {
 
     int x, y, radius, borderSize;
     Color bgColor, borderColor;
@@ -48,6 +48,7 @@ public class Circle implements Environment {
 
     @Override
     public boolean isColliding(Point point) {
+        // TODO: Implement a circle collider
         return false;
     }
 }

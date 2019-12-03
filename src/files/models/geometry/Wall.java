@@ -1,11 +1,11 @@
-package files.views.environment;
+package files.models.geometry;
 
 import files.interfaces.Environment;
-import files.models.shapes.Point;
+import files.models.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Wall implements Environment {
+public class Wall extends Shape implements Environment {
     public int x,y,width,height;
     public int borderSize = 0;
     public Color borderColor;
