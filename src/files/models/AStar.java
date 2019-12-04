@@ -31,6 +31,13 @@ public class AStar {
 
         ArrayList<Vertex> result = aStar(startNode, endNode);
 
+        for(Vertex v : result) {
+            System.out.print( v.name + " Dist:" + v.distance + " ");
+            if (v!=endNode)
+                System.out.print("-> ");
+        }
+
+
     }
 
     public Graph makeSmallGraphA() {
@@ -60,7 +67,7 @@ public class AStar {
         ArrayList<Vertex> closedList = new ArrayList<>();
 
         for (Vertex vertex : graph.getVertices()) {
-            vertex.setDistance(200);
+            vertex.setDistance(infinity);
             vertex.setPredecessor(null);
             //vertex.setHeuristic(endNode);
         }
@@ -69,49 +76,64 @@ public class AStar {
         openTreeSet.add(startNode);
         Vertex current;
 
-        loop:
         while (openTreeSet.size() != 0) {
             current = openTreeSet.first();
-            System.out.println(current.name + " " + current.distance);
+            System.out.println(openTreeSet.first().f);
             openTreeSet.remove(current);
+
+            if (current == endNode){
+                System.out.println("solution found " + current.name + current.predecessor.name);
+                break;
+            }
+
 
             for (Edge edge : current.edges){
 
                 Vertex successor = edge.getToVertex();
-                int successorG = current.distance + successor.distance;
-                long successorH = heuristic(current,endNode);
+                int successorG = current.distance + edge.distance;
+                long successorH = heuristic(current.distance,endNode);
                 long successorF = successorG + successorH;
-
-                if (successor == endNode){
-                    System.out.println("solution found" + current.name + endNode.name);
-                    break loop;
-                }
 
                 if (openTreeSet.contains(successor) && successorF < successor.f){
                     System.out.println(successor.name + " " + successorF);
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
+                    openTreeSet.remove(successor);
+                    openTreeSet.add(successor);
                 }
                 else if (closedList.contains(successor) && successorF < successor.f){
                     closedList.remove(successor);
                     openTreeSet.add(successor);
                 }
                 else {
-                    openTreeSet.add(successor);
+                    System.out.println("added:  " + successor.name);
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
+                    openTreeSet.add(successor);
                 }
+                System.out.println("evaluated: " + edge.getFromVertex().name
+                + "  going to: " + edge.getToVertex().name
+                + "  fValue: " + successorF
+                + "  removed: " +current.name);
             }
             closedList.add(current);
         }
 
-        return null;
+        Vertex resultCurrent = endNode;
+        ArrayList<Vertex> Path= new ArrayList<>();
+        Path.add(endNode);
+
+        while ((resultCurrent != startNode) && (resultCurrent.predecessor != null)) {
+            resultCurrent = resultCurrent.predecessor;
+            Path.add(0,resultCurrent);
+        }
+        return Path;
     }
 
-    public long heuristic(Vertex current, Vertex endNode) {
-        //return sqrt((endNode.x - this.x)*(endNode.x - this.x) + (endNode.y - this.y)*(endNode.y - this.y));
-        return 0;
+    public long heuristic(int dist, Vertex endNode) {
+        //return sqrt(pow(endNode.x - current.x, 2) + pow(endNode.y - current.y, 2));
+        return 9-dist;
     }
 }

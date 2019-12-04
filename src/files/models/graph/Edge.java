@@ -19,6 +19,6 @@ public class Edge {
         this.from=from;
         this.to=to;
         this.from.addEdge(this);
-        this.to.addEdge(this); //If not directional
+        //this.to.addEdge(this); //If not directional
     }
 }
