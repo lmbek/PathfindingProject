@@ -18,9 +18,68 @@ public class AStar {
     }
 
     public void startAStar() {
+
+        graph = this.makeSmallGraphA();
+        /*
         // Create graph
         //graph = this.makeDijkstraGraph();
-        graph = this.makeSmallGraphA();
+        graph = this.makeSmallGraphB();
+        // A
+        //Vertex startNode = graph.getVertex("A");
+        //Vertex endNode = graph.getVertex("E");
+
+        // B
+        Vertex startNode = graph.getVertex("J");
+        Vertex endNode = graph.getVertex("F");
+
+        ArrayList<Vertex> result = aStar(startNode, endNode);
+
+        for(Vertex v : result) {
+            System.out.print( v.name + " Dist:" + v.distance + " ");
+            if (v!=endNode)
+                System.out.print("-> ");
+        }
+
+    }
+
+
+    public Graph makeSmallGraphB() {
+        Graph myGraph = new Graph();
+        final Vertex A = myGraph.addVertex("A");
+        final Vertex B = myGraph.addVertex("B");
+        final Vertex C = myGraph.addVertex("C");
+        final Vertex D = myGraph.addVertex("D");
+        final Vertex E = myGraph.addVertex("E");
+        final Vertex F = myGraph.addVertex("F");
+        final Vertex G = myGraph.addVertex("G");
+        final Vertex H = myGraph.addVertex("H");
+        final Vertex I = myGraph.addVertex("I");
+        final Vertex J = myGraph.addVertex("J");
+
+        myGraph.newEdge(A, B, 10, 0);
+        myGraph.newEdge(A, D, 20, 0);
+        myGraph.newEdge(A, E, 20, 0);
+        myGraph.newEdge(A, F, 5, 0);
+        myGraph.newEdge(A, G, 15, 0);
+        myGraph.newEdge(B, C, 5, 0);
+        myGraph.newEdge(B, D, 10, 0);
+        myGraph.newEdge(C, B, 15, 0);
+        myGraph.newEdge(C, D, 5, 0);
+        myGraph.newEdge(D, E, 10, 0);
+        myGraph.newEdge(E, F, 5, 0);
+        myGraph.newEdge(G, F, 10, 0);
+        myGraph.newEdge(H, A, 5, 0);
+        myGraph.newEdge(H, B, 20, 0);
+        myGraph.newEdge(H, G, 5, 0);
+        myGraph.newEdge(I, B, 15, 0);
+        myGraph.newEdge(I, H, 20, 0);
+        myGraph.newEdge(I, J, 10, 0);
+        myGraph.newEdge(J, B, 5, 0);
+        myGraph.newEdge(J, C, 15, 0);
+
+        return myGraph;
+    }
+*/
         // A
         Vertex startNode = graph.getVertex("A");
         Vertex endNode = graph.getVertex("E");
@@ -61,6 +120,7 @@ public class AStar {
         return myGraph;
     }
 
+
     public ArrayList<Vertex> aStar(Vertex startNode, Vertex endNode) {
 
         TreeSet<Vertex> openTreeSet = new TreeSet<>(Comparator.comparingLong(Vertex::getF));
@@ -69,23 +129,24 @@ public class AStar {
         for (Vertex vertex : graph.getVertices()) {
             vertex.setDistance(infinity);
             vertex.setPredecessor(null);
-            //vertex.setHeuristic(endNode);
         }
 
         startNode.setDistance(0);
+        startNode.setF(startNode.distance + heuristic(0, endNode));
         openTreeSet.add(startNode);
         Vertex current;
 
+        loop:
         while (openTreeSet.size() != 0) {
             current = openTreeSet.first();
-            System.out.println(openTreeSet.first().f);
             openTreeSet.remove(current);
 
+            /*
             if (current == endNode){
                 System.out.println("solution found " + current.name + current.predecessor.name);
                 break;
             }
-
+            */
 
             for (Edge edge : current.edges){
 
@@ -94,20 +155,26 @@ public class AStar {
                 long successorH = heuristic(current.distance,endNode);
                 long successorF = successorG + successorH;
 
+                if (successor == endNode){
+                    successor.setPredecessor(current);
+                    successor.setDistance(successorG);
+                    successor.setF(successorF);
+                    System.out.println("solution found " + successor.name + successor.predecessor.name);
+                    break loop;
+                }
+
                 if (openTreeSet.contains(successor) && successorF < successor.f){
-                    System.out.println(successor.name + " " + successorF);
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
                     openTreeSet.remove(successor);
                     openTreeSet.add(successor);
-                }
-                else if (closedList.contains(successor) && successorF < successor.f){
-                    closedList.remove(successor);
-                    openTreeSet.add(successor);
-                }
-                else {
-                    System.out.println("added:  " + successor.name);
+                } else if (closedList.contains(successor)){
+                    if (successorF < successor.f) {
+                        closedList.remove(successor);
+                        openTreeSet.add(successor);
+                    }
+                } else {
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
