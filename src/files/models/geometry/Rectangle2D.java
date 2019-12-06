@@ -5,8 +5,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Rectangle2D extends Shape implements Environment {
-    private Point A, B, C, D;
+    private Point A;
+    private Point B;
+    private Point C;
+    private Point D;
+    private Point[] points;
     private Line2D AB, BD, CD, AC;
+    private Line2D[] lines;
     private Vector position;
     private Vector size;
     private Triangle2D firstHalf;
@@ -24,12 +29,14 @@ public class Rectangle2D extends Shape implements Environment {
         B = new Point(x+width,y);
         C = new Point(x,y+height);
         D = new Point(x+width,y+height);
+        points = new Point[]{A,B,C,D};
         AB = new Line2D(A,B);
         BD = new Line2D(B,D);
         CD = new Line2D(C,D);
         AC = new Line2D(A,C);
-        firstHalf = new Triangle2D(A, B, C);
-        secondHalf = new Triangle2D(D, B, C);
+        lines = new Line2D[]{AB,BD,CD,AC};
+        firstHalf = new Triangle2D(A,B,C);
+        secondHalf = new Triangle2D(D,B,C);
 
         this.position = new Vector(x,y);
         this.size = new Vector(width, height);
@@ -56,5 +63,29 @@ public class Rectangle2D extends Shape implements Environment {
             graphicsContext.strokeRect(position.getX(),position.getY(),size.getX(),size.getY());
             graphicsContext.setStroke(borderColor);
         }
+    }
+
+    public Point getA() {
+        return A;
+    }
+
+    public Point getB() {
+        return B;
+    }
+
+    public Point getC() {
+        return C;
+    }
+
+    public Point getD() {
+        return D;
+    }
+
+    public Point[] getPoints() {
+        return points;
+    }
+
+    public Line2D[] getLines() {
+        return lines;
     }
 }

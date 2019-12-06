@@ -4,7 +4,6 @@ import files.models.Graph;
 import files.models.Shape;
 import files.models.geometry.Circle;
 import files.models.geometry.Text;
-import files.models.geometry.Wall;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
@@ -19,23 +18,12 @@ public class Graphic {
 
     public Graphic(GraphicsContext graphicsContext){
         this.graphicsContext = graphicsContext;
-        this.insertHardcodedData();
     }
 
     public void setEnvironment(ArrayList<Shape> shapes){
         this.environment = shapes;
     }
 
-
-    public void insertHardcodedData(){
-        Wall wall = new Wall(50,50,100,100,Color.DARKGREY,Color.BLACK, 3);
-        Wall wall2 = new Wall(250,40,50,150,Color.DARKGREY, Color.BLACK, 3);
-
-
-        //environment.add(wall);
-        //environment.add(wall2);
-
-    }
 
     public void convertToGraphics(){
 

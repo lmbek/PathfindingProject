@@ -51,4 +51,9 @@ public class Circle extends Shape implements Environment {
         // TODO: Implement a circle collider
         return false;
     }
+
+    @Override
+    public Line2D[] getLines() {
+        return null;
+    }
 }

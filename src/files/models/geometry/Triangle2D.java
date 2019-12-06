@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 public class Triangle2D extends Shape implements Environment {
     private Point A, B, C;
     private Line2D a, b, c;
+    private Line2D[] lines;
     private boolean clockwise;
 
     Triangle2D(Point A, Point B, Point C) {
@@ -17,7 +18,7 @@ public class Triangle2D extends Shape implements Environment {
         a = new Line2D(B, C);
         b = new Line2D(C, A);
         c = new Line2D(A, B);
-
+        lines = new Line2D[]{a,b,c};
         if (A.isLeftOfLine(a) && B.isLeftOfLine(b) && C.isLeftOfLine(c)) { // We use A, as we only need to use one of the 3 points
             clockwise = false;
         } else if (A.isRightOfLine(a) && B.isRightOfLine(b) && C.isRightOfLine(c)) {
@@ -46,6 +47,11 @@ public class Triangle2D extends Shape implements Environment {
         } else {
             return point.isLeftOfLine(a) && point.isLeftOfLine(b) && point.isLeftOfLine(c);
         }
+    }
+
+    @Override
+    public Line2D[] getLines() {
+        return lines;
     }
 
     @Override
