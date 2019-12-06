@@ -11,59 +11,49 @@ public class Environment {
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
     public Environment() {
-        addShapes();
+        generateEnvironment();
     }
 
     public void generateEnvironment(){
-        //TODO: Make random map generator
-    }
-
-    public void addShapes() {
-        for(int i=0; i<100; i++){
-            double width = Math.round(10 + Math.random() * 90);
-            double height = Math.round(10 + Math.random() * 90);
-// Set x and y after width and height, as we need to fix the location.
+        shapes.clear();
+        for(int i=0; i<40; i++){
+            double width = Math.round(30 + Math.random() * 50);
+            double height = Math.round(30 + Math.random() * 50);
+            // Set x and y after width and height, as we need to fix the location.
             double x = Math.round(Math.random() * (800-width));
             double y = Math.round(Math.random() * (600-height));
             Color backgroundColor = Color.DARKGREY;
             Color borderColor = Color.BLACK;
-            int borderSize = 3;
+            int borderSize = 2;
             Rectangle2D newShape = new Rectangle2D(x, y, width, height, backgroundColor, borderColor, borderSize);
 
-            boolean larsNotRetarded = true;
+            boolean creatable = true;
 
             for(Shape shape : shapes) {
-                for(Point point : newShape.getPoints()){
-                    if(newShape.isColliding(point)) {
-                        larsNotRetarded = false;
+                for(Point point : shape.getPoints()){
+                    if(newShape.isColliding(point)) { // for every points check if new shape is colliding with shape point
+                        creatable = false;
                     }
                 }
             }
 
             for(Shape shape : shapes) {
                 for(Point point : newShape.getPoints()){
-                    if(shape.isColliding(point)) {
-                        larsNotRetarded = false;
+                    if(shape.isColliding(point)) { // for every shape points check if shape is colliding with new shape point
+                        creatable = false;
                     }
-                    // TODO: go into rectangle2D and make it possible to get returned lines
-
                 }
                 for(Line2D line : shape.getLines()){
                     for(Line2D newLine : newShape.getLines()){
-                        if(newLine.intersects(line)) {
-                            larsNotRetarded = false;
-                            //System.out.println("very often");
-                        } else {
-
+                        if(newLine.isIntersecting(line)) {
+                            creatable = false;
                         }
                     }
                 }
             }
 
-            if(larsNotRetarded){
+            if(creatable){
                 shapes.add(newShape);
-            } else {
-                larsNotRetarded = true;
             }
         }
     }

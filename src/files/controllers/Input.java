@@ -2,6 +2,8 @@ package files.controllers;
 
 import files.Model;
 import files.View;
+import files.models.Environment;
+import files.models.Shape;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 
@@ -26,6 +28,23 @@ public class Input {
 
             switch(nodeName){
                 case "button":
+                    node.setOnMouseClicked(event -> {
+                        model.getEnvironment().generateEnvironment();
+                        ArrayList<Shape> shape = model.getEnvironment().getShapes();
+                        view.getUI().getGraphic().setEnvironment(shape);
+                        view.getUI().getGraphic().draw();
+
+                    });
+
+                    node.setOnKeyPressed(event -> {
+                        System.out.println(event.getCode());
+                        if(event.getCode().equals(KeyCode.ENTER)) {
+                            // do something
+                            System.out.println("You Pressed Enter");
+                        }
+                    });
+                    break;
+                case "fullscreenButton":
                     node.setOnMouseClicked(event -> {
                         System.out.println("fullscreen "+fullScreen);
                         fullScreen = !fullScreen;

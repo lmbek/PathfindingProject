@@ -10,10 +10,12 @@ import static java.lang.Double.NaN;
 public class Line2D extends Shape implements Environment {
     private Point start;
     private Point end;
+    private Point[] points;
 
     Line2D(Point start, Point end) {
         this.start = start;
         this.end = end;
+        this.points = new Point[]{start,end};
     }
 
     public Point getStart() {
@@ -24,8 +26,7 @@ public class Line2D extends Shape implements Environment {
         return end;
     }
 
-    public boolean intersects(Line2D otherLine){
-        // TODO: rework, we dont need the hældningskvoficient, we need to look at what point they intersect
+    public boolean isIntersecting(Line2D otherLine){
         double startX = this.getStart().getX();
         double startY = this.getStart().getY();
         double endX = this.getEnd().getX();
@@ -35,26 +36,17 @@ public class Line2D extends Shape implements Environment {
         double otherStartY = otherLine.getStart().getY();
         double otherEndY = otherLine.getEnd().getY();
 
-        double a = (endY - startY) / (endX - startX)+0.01;
-        double c = (otherEndY - otherStartY) / (otherEndX - otherStartX)+0.01;
+            double denominator = ((endX - startX) * (otherEndY - otherStartY)) - ((endY - startY) * (otherEndX - otherStartX));
+            double numerator1 = ((startY - otherStartY) * (otherEndX - otherStartX)) - ((startX - otherStartX) * (otherEndY - otherStartY));
+            double numerator2 = ((startY - otherStartY) * (endX - startX)) - ((startX - otherStartX) * (endY - startY));
 
-        double b = startY - a * startX;
-        double d = otherStartY - c * otherStartX;
-        if(a==c){
-            return false;
-        }
+            // Detect coincident lines (has a problem, read below)
+            if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
 
-        double x = (d-b)/(a-c)+0.01;
-        double y = a*x+b+0.01;
-        System.out.println((d-b));
+            double r = numerator1 / denominator;
+            double s = numerator2 / denominator;
 
-        if (Double.isNaN(x)||Double.isNaN(y)){
-            return false;
-        } else {
-            System.out.println("x: "+x);
-            System.out.println("y: "+y);
-            return true;
-        }
+            return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
     }
 
     public boolean isColliding(Point point){
@@ -64,6 +56,11 @@ public class Line2D extends Shape implements Environment {
     @Override
     public Line2D[] getLines() {
         return new Line2D[0];
+    }
+
+    @Override
+    public Point[] getPoints() {
+        return points;
     }
 
     @Override

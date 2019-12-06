@@ -4,6 +4,7 @@ import files.models.Graph;
 import files.models.Shape;
 import files.models.geometry.Circle;
 import files.models.geometry.Text;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
@@ -31,7 +32,8 @@ public class Graphic {
 
     public void draw(){
         // add graph
-
+        Canvas canvas = graphicsContext.getCanvas();
+        graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         int vertex = 2;
         //for (Vertex vertex : vertices) {

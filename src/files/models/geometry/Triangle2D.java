@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 
 public class Triangle2D extends Shape implements Environment {
     private Point A, B, C;
+    private Point[] points;
     private Line2D a, b, c;
     private Line2D[] lines;
     private boolean clockwise;
@@ -15,6 +16,7 @@ public class Triangle2D extends Shape implements Environment {
         this.A = A;
         this.B = B;
         this.C = C;
+        points = new Point[]{A,B,C};
         a = new Line2D(B, C);
         b = new Line2D(C, A);
         c = new Line2D(A, B);
@@ -52,6 +54,11 @@ public class Triangle2D extends Shape implements Environment {
     @Override
     public Line2D[] getLines() {
         return lines;
+    }
+
+    @Override
+    public Point[] getPoints() {
+        return points;
     }
 
     @Override

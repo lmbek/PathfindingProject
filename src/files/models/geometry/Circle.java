@@ -54,6 +54,11 @@ public class Circle extends Shape implements Environment {
 
     @Override
     public Line2D[] getLines() {
-        return null;
+        return null; // only return lines if we rework from 360 builtin lines to our own lines.
+    }
+
+    @Override
+    public Point[] getPoints() {
+        return new Point[0]; // TODO: implement circle with 1 points, the centrum, rework from x and y to center point
     }
 }
