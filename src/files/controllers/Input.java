@@ -30,12 +30,14 @@ public class Input {
                 case "button":
                     node.setOnMouseClicked(event -> {
                         model.getEnvironment().generateEnvironment();
+                        model.getGraph().recalculate(model.getEnvironment());
+
                         ArrayList<Shape> shape = model.getEnvironment().getShapes();
                         view.getUI().getGraphic().setEnvironment(shape);
                         view.getUI().getGraphic().draw();
 
                     });
-
+/*
                     node.setOnKeyPressed(event -> {
                         System.out.println(event.getCode());
                         if(event.getCode().equals(KeyCode.ENTER)) {
@@ -43,6 +45,7 @@ public class Input {
                             System.out.println("You Pressed Enter");
                         }
                     });
+*/
                     break;
                 case "fullscreenButton":
                     node.setOnMouseClicked(event -> {

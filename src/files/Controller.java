@@ -1,7 +1,7 @@
 package files;
 
 import files.controllers.Input;
-import files.interfaces.Geometry;
+import files.models.Graph;
 import files.models.Shape;
 
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ public class Controller {
     Controller(Model model, View view){
         this.onlyOneInstance();
         this.model = model;
+
         this.view = view;
         this.input = new Input(model,view);
-        this.run();
         this.updateView();
     }
 
@@ -39,14 +39,12 @@ public class Controller {
     }
 
     private void updateView(){
-        // TODO: Insert Environment
         ArrayList<Shape> shapes = model.getEnvironment().getShapes();
-        System.out.println(shapes.size());
+        Graph graph = model.getGraph();
         view.getUI().getGraphic().setEnvironment(shapes);
+        view.getUI().getGraphic().setGraph(graph);
 
         run();
-
-        //view.setEnvironment();
     }
 
     private void updateModel(){

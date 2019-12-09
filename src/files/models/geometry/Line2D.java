@@ -12,7 +12,7 @@ public class Line2D extends Shape implements Environment {
     private Point end;
     private Point[] points;
 
-    Line2D(Point start, Point end) {
+    public Line2D(Point start, Point end) {
         this.start = start;
         this.end = end;
         this.points = new Point[]{start,end};

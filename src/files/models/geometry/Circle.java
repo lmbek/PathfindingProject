@@ -4,30 +4,20 @@ import files.models.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-/*************
- **************  MADE BY LARS MORTEN BEK | Miniproject | Mastermind
- *************/
-
-
 public class Circle extends Shape implements Environment {
+    private Point position;
+    private double radius, borderSize;
+    private Color bgColor, borderColor;
 
-    int x, y, radius, borderSize;
-    Color bgColor, borderColor;
-
-    public Circle(int x, int y, int radius, Color bgColor) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.bgColor = bgColor;
+    public Circle(Point position, int radius, Color bgColor) {
+        this(position,radius,bgColor,null,0);
     }
 
-    public Circle (int x, int y, int radius, Color bgColor, Color borderColor, int borderSize) {
-        this.x = x;
-        this.y = y;
+    public Circle (Point position, int radius, Color bgColor, Color borderColor, int borderSize) {
+        this.position = position;
         this.radius = radius;
         this.bgColor = bgColor;
         this.borderColor = borderColor;
-        this.bgColor = bgColor;
         this.borderSize = borderSize;
     }
 
@@ -36,12 +26,12 @@ public class Circle extends Shape implements Environment {
         // draw oval/circle
         if(this.bgColor != null){
             gc.setFill(bgColor);
-            gc.fillOval(x, y, radius, radius);
+            gc.fillOval(position.getX()-(radius/2), position.getY()-(radius/2), radius, radius);
         }
 
         if(this.borderSize != 0){
             gc.setLineWidth(borderSize);
-            gc.strokeOval(x,y,radius,radius);
+            gc.strokeOval(position.getX()-(radius/2),position.getY()-(radius/2),radius,radius);
             gc.setStroke(borderColor);
         }
     }

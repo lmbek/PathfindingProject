@@ -15,7 +15,9 @@ public class Environment {
     }
 
     public void generateEnvironment(){
+        // clear environment
         shapes.clear();
+        // Create environment
         for(int i=0; i<40; i++){
             double width = Math.round(30 + Math.random() * 50);
             double height = Math.round(30 + Math.random() * 50);

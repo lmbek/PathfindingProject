@@ -20,6 +20,6 @@ public class Starter extends Application {
     public void start(Stage stage) {
         stage.setTitle("Pathfinding Project 2019");
         new Controller(new Model(),new View(stage)); // Model-View-Controller Architectural Pattern
-        stage.show(); //
+        stage.show();
     }
 }

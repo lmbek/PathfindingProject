@@ -44,10 +44,8 @@ public class UserInterface extends Group {
     }
 
     public void initCanvas(){
-        System.out.println("lar");
         GraphicsContext gc = canvas.getGraphicsContext2D(); // Get the graphics context of the canvas
         graphic = new Graphic(gc); // Send the graphics context to the graphics
-        graphic.draw(); // Draw the graphics
     }
 
     public Graphic getGraphic() {

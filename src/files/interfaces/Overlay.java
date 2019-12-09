@@ -1,9 +1,7 @@
 package files.interfaces;
 
-import files.models.geometry.Point;
 import javafx.scene.canvas.GraphicsContext;
 
-public interface Environment {
+public interface Overlay {
     void draw(GraphicsContext graphicsContext);
-    boolean isColliding(Point point);
 }

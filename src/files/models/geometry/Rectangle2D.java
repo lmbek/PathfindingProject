@@ -45,7 +45,7 @@ public class Rectangle2D extends Shape implements Environment {
         this.bgColor = bgColor;
         this.borderSize = borderSize;
     }
-
+    // TODO: there is an error where a Vertex from the graph can be generated on the line between the triangles
     public boolean isColliding(Point obj) {
         return firstHalf.isColliding(obj) || secondHalf.isColliding(obj);
     }

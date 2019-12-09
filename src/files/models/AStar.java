@@ -8,18 +8,13 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 public class AStar {
-
     private Graph graph;
-    int infinity = (int) Double.POSITIVE_INFINITY;
+    private final int infinity = (int) Double.POSITIVE_INFINITY;
+    private ArrayList<Vertex> result;
 
-    public static void main(String[] args) {
-        AStar aStar = new AStar();
-        aStar.startAStar();
-    }
+    public AStar(Graph graph) {
 
-    public void startAStar() {
-
-        graph = this.makeSmallGraphA();
+        //graph = this.makeSmallGraphA();
         /*
         // Create graph
         //graph = this.makeDijkstraGraph();
@@ -88,7 +83,7 @@ public class AStar {
         //Vertex startNode = graph.getVertex("J");
         //Vertex endNode = graph.getVertex("F");
 
-        ArrayList<Vertex> result = aStar(startNode, endNode);
+        ArrayList<Vertex> result = start(graph, startNode, endNode);
 
         for(Vertex v : result) {
             System.out.print( v.name + " Dist:" + v.distance + " ");
@@ -100,6 +95,8 @@ public class AStar {
     }
 
     public Graph makeSmallGraphA() {
+        // TODO: take this graph
+        /*
         Graph myGraph= new Graph();
         final Vertex A= myGraph.addVertex("A");
         final Vertex B= myGraph.addVertex("B");
@@ -118,12 +115,14 @@ public class AStar {
         myGraph.newEdge(E,D, 4,  3);
 
         return myGraph;
+
+         */ return null;
     }
 
 
-    public ArrayList<Vertex> aStar(Vertex startNode, Vertex endNode) {
+    public ArrayList<Vertex> start(Graph graph, Vertex startNode, Vertex endNode) {
 
-        TreeSet<Vertex> openTreeSet = new TreeSet<>(Comparator.comparingLong(Vertex::getF));
+        TreeSet<Vertex> openTreeSet = new TreeSet<>(Comparator.comparingDouble(Vertex::getF));
         ArrayList<Vertex> closedList = new ArrayList<>();
 
         for (Vertex vertex : graph.getVertices()) {
@@ -132,7 +131,7 @@ public class AStar {
         }
 
         startNode.setDistance(0);
-        startNode.setF(startNode.distance + heuristic(0, endNode));
+        startNode.setF(startNode.distance + heuristic(0, startNode, endNode)); // TODO: temporary...?
         openTreeSet.add(startNode);
         Vertex current;
 
@@ -151,9 +150,9 @@ public class AStar {
             for (Edge edge : current.edges){
 
                 Vertex successor = edge.getToVertex();
-                int successorG = current.distance + edge.distance;
-                long successorH = heuristic(current.distance,endNode);
-                long successorF = successorG + successorH;
+                double successorG = current.distance + edge.distance;
+                double successorH = heuristic(current.distance,current,endNode);
+                double successorF = successorG + successorH;
 
                 if (successor == endNode){
                     successor.setPredecessor(current);
@@ -199,8 +198,12 @@ public class AStar {
         return Path;
     }
 
-    public long heuristic(int dist, Vertex endNode) {
-        //return sqrt(pow(endNode.x - current.x, 2) + pow(endNode.y - current.y, 2));
-        return 9-dist;
+    private double heuristic(double dist,Vertex start, Vertex end) {
+        return Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
+        //return 9-dist;
+    }
+
+    public ArrayList<Vertex> getResult() {
+        return result;
     }
 }

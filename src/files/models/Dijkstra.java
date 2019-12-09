@@ -6,21 +6,13 @@ import files.models.graph.Vertex;
 import java.util.*;
 
 public class Dijkstra {
+    private final int infinity = (int) Double.POSITIVE_INFINITY;
+    private ArrayList<Vertex> result;
 
-    private Graph graph;
-
-    int infinity = (int) Double.POSITIVE_INFINITY;
-
-
-    public static void main(String[] args) {
-        Dijkstra dijkstra = new Dijkstra();
-        dijkstra.startDijkstra();
-    }
-
-    public void startDijkstra() {
+    public Dijkstra(Graph graph) {
         // Create graph
         //graph = this.makeDijkstraGraph();
-        graph = this.makeSmallGraphB();
+        //graph = this.makeSmallGraphB();
         // A
         //Vertex startNode = graph.getVertex("A");
         //Vertex endNode = graph.getVertex("E");
@@ -29,7 +21,7 @@ public class Dijkstra {
         Vertex startNode = graph.getVertex("J");
         Vertex endNode = graph.getVertex("F");
 
-        ArrayList<Vertex> result = dijkstra(startNode, endNode);
+        ArrayList<Vertex> result = start(graph, startNode, endNode);
 
         for(Vertex v : result) {
             System.out.print( v.name + " Dist:" + v.distance + " ");
@@ -41,6 +33,7 @@ public class Dijkstra {
 
 
     public Graph makeSmallGraphB() {
+        /*
         Graph myGraph = new Graph();
         final Vertex A = myGraph.addVertex("A");
         final Vertex B = myGraph.addVertex("B");
@@ -73,17 +66,13 @@ public class Dijkstra {
         myGraph.newEdge(I, J, 10, 0);
         myGraph.newEdge(J, B, 5, 0);
         myGraph.newEdge(J, C, 15, 0);
-
-        return myGraph;
+*/
+        return null;
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////// TODO: Implement new dijkstra 25-11-2019 //////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////
+    public ArrayList<Vertex> start(Graph graph, Vertex startNode, Vertex endNode) {
 
-    public ArrayList<Vertex> dijkstra(Vertex startNode, Vertex endNode) {
-
-        TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingInt(Vertex::getDistance));
+        TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingDouble(Vertex::getDistance));
 
         for (Vertex vertex : graph.getVertices()) {
             vertex.setDistance(infinity);
@@ -123,5 +112,9 @@ public class Dijkstra {
             Path.add(0,resultCurrent);
         }
         return Path;
+    }
+
+    public ArrayList<Vertex> getResult() {
+        return result;
     }
 }
