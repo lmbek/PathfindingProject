@@ -76,20 +76,20 @@ public class AStar {
     }
 */
         // A
-        Vertex startNode = graph.getVertex("A");
-        Vertex endNode = graph.getVertex("E");
+        //Vertex startNode = graph.getVertex("A");
+        //Vertex endNode = graph.getVertex("E");
 
         // B
         //Vertex startNode = graph.getVertex("J");
         //Vertex endNode = graph.getVertex("F");
 
-        ArrayList<Vertex> result = start(graph, startNode, endNode);
+        //ArrayList<Vertex> result = start(graph, startNode, endNode);
 
-        for(Vertex v : result) {
-            System.out.print( v.name + " Dist:" + v.distance + " ");
-            if (v!=endNode)
-                System.out.print("-> ");
-        }
+        //for(Vertex v : result) {
+        //    System.out.print( v.name + " Dist:" + v.distance + " ");
+        //    if (v!=endNode)
+        //        System.out.print("-> ");
+        //}
 
 
     }

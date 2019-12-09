@@ -45,9 +45,9 @@ public class Triangle2D extends Shape implements Environment {
 
     public boolean isColliding(Point point) {
         if (clockwise) {
-            return point.isRightOfLine(a) && point.isRightOfLine(b) && point.isRightOfLine(c);
+            return (point.isRightOfLine(a) && point.isRightOfLine(b) && point.isRightOfLine(c))  || point.isOnLine(a) || point.isOnLine(b) || point.isOnLine(c);
         } else {
-            return point.isLeftOfLine(a) && point.isLeftOfLine(b) && point.isLeftOfLine(c);
+            return (point.isLeftOfLine(a) && point.isLeftOfLine(b) && point.isLeftOfLine(c)) || point.isOnLine(a) || point.isOnLine(b) || point.isOnLine(c);
         }
     }
 
@@ -59,6 +59,11 @@ public class Triangle2D extends Shape implements Environment {
     @Override
     public Point[] getPoints() {
         return points;
+    }
+
+    @Override
+    public Point[] getGraphPoints() {
+        return null;
     }
 
     @Override

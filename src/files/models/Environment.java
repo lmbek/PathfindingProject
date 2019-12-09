@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public class Environment {
+    int size = 50;
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
     public Environment() {
@@ -18,12 +19,12 @@ public class Environment {
         // clear environment
         shapes.clear();
         // Create environment
-        for(int i=0; i<40; i++){
-            double width = Math.round(30 + Math.random() * 50);
-            double height = Math.round(30 + Math.random() * 50);
+        for(int i=0; i<size; i++){
+            double width = Math.round(20 + Math.random() * 80);
+            double height = Math.round(20 + Math.random() * 80);
             // Set x and y after width and height, as we need to fix the location.
-            double x = Math.round(Math.random() * (800-width));
-            double y = Math.round(Math.random() * (600-height));
+            double x = Math.round(10+Math.random() * (800-120));
+            double y = Math.round(10+Math.random() * (600-160));
             Color backgroundColor = Color.DARKGREY;
             Color borderColor = Color.BLACK;
             int borderSize = 2;

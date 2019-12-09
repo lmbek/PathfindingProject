@@ -16,7 +16,7 @@ public class Graph {
     private ArrayList<Vertex> vertices = new ArrayList<>();
     private ArrayList<Overlay> shapes = new ArrayList<>();
     private String type;
-    private int waypointSize = 40;
+    private int waypointSize = 50;
 
     public Graph(String type, Environment environment){
         this.type = type;
@@ -78,8 +78,10 @@ public class Graph {
                     }
                     // if we have creatable Relation, lets add it
                     if(creatableRelation){
-                        double distance = 5;
-                        newEdge(start,end, distance,  3); // from, to, distance, time
+                        double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
+                        distance = 5; // TODO: remove this and fix the distance formula
+                        System.out.println("distance:" + distance);
+                        newEdge(start,end, distance,  distance); // from, to, distance, time
                     }
                 }
             }
@@ -89,10 +91,46 @@ public class Graph {
 
     public void navMeshGraph(Environment environment){
         // TODO: Lets take this second
-        //for(){
+        int id = 0;
+        for(Shape object : environment.getShapes()){
+            for(Point point : object.getGraphPoints()){
+                // Create vertex
 
-        //}
+
+                Vertex vertex = addVertex(""+id, point.getX(), point.getY());
+                shapes.add(vertex);
+                id += 1;
+
+            }
+        }
+        // Create edges (relations)
+
+        for(Vertex i : vertices){
+            for(Vertex j : vertices){
+                boolean creatableRelation = true;
+                Vertex start = i;
+                Vertex end = j;
+                for(Shape object : environment.getShapes()){ // 4 operations if a rectangle
+                    for(Line2D obstacleLine : object.getLines()){
+                        if(obstacleLine.isIntersecting(new Line2D(new Point(start.getX(),start.getY()),new Point(end.getX(),end.getY())))){
+                            creatableRelation = false;
+
+                        }
+
+                    }
+                }
+                // if we have creatable Relation, lets add it
+                if(creatableRelation){
+                    double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
+                    distance = 5; // TODO: remove this and fix the distance formula
+                    newEdge(start,end, distance,  distance); // from, to, distance, time
+                }
+
+
+            }
+        }
     }
+
 
     public void recalculate(Environment environment){
         vertices.clear();

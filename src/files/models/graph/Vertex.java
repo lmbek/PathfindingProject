@@ -42,7 +42,7 @@ public class Vertex extends Vector implements Overlay {
             Point from = new Point(edge.getFromVertex().getX(),edge.getFromVertex().getY());
             Point to =  new Point(edge.getToVertex().getX(),edge.getToVertex().getY());
             Line2D line = new Line2D(from,to);
-            line.draw(graphicsContext);
+            //line.draw(graphicsContext);
         }
 
     }

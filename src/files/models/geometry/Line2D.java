@@ -32,8 +32,8 @@ public class Line2D extends Shape implements Environment {
         double endX = this.getEnd().getX();
         double endY = this.getEnd().getY();
         double otherStartX = otherLine.getStart().getX();
-        double otherEndX = otherLine.getEnd().getX();
         double otherStartY = otherLine.getStart().getY();
+        double otherEndX = otherLine.getEnd().getX();
         double otherEndY = otherLine.getEnd().getY();
 
             double denominator = ((endX - startX) * (otherEndY - otherStartY)) - ((endY - startY) * (otherEndX - otherStartX));
@@ -61,6 +61,11 @@ public class Line2D extends Shape implements Environment {
     @Override
     public Point[] getPoints() {
         return points;
+    }
+
+    @Override
+    public Point[] getGraphPoints() {
+        return null;
     }
 
     @Override

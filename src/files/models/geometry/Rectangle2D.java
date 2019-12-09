@@ -10,6 +10,7 @@ public class Rectangle2D extends Shape implements Environment {
     private Point C;
     private Point D;
     private Point[] points;
+    private Point[] graphPoints;
     private Line2D AB, BD, CD, AC;
     private Line2D[] lines;
     private Vector position;
@@ -30,6 +31,12 @@ public class Rectangle2D extends Shape implements Environment {
         C = new Point(x,y+height);
         D = new Point(x+width,y+height);
         points = new Point[]{A,B,C,D};
+        graphPoints = new Point[]{
+            new Point(A.getX()-1,A.getY()-1),
+            new Point(B.getX()+1,B.getY()-1),
+            new Point(C.getX()-1,C.getY()+1),
+            new Point(D.getX()+1,D.getY()+1)
+        };
         AB = new Line2D(A,B);
         BD = new Line2D(B,D);
         CD = new Line2D(C,D);
@@ -87,5 +94,9 @@ public class Rectangle2D extends Shape implements Environment {
 
     public Line2D[] getLines() {
         return lines;
+    }
+
+    public Point[] getGraphPoints() {
+        return graphPoints;
     }
 }

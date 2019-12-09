@@ -10,4 +10,5 @@ public abstract class Shape implements Environment, Overlay {
     public abstract void draw(GraphicsContext graphicsContext);
     public abstract Line2D[] getLines();
     public abstract Point[] getPoints();
+    public abstract Point[] getGraphPoints();
 }

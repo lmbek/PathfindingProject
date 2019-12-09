@@ -51,4 +51,9 @@ public class Circle extends Shape implements Environment {
     public Point[] getPoints() {
         return new Point[0]; // TODO: implement circle with 1 points, the centrum, rework from x and y to center point
     }
+
+    @Override
+    public Point[] getGraphPoints() {
+        return null;
+    }
 }

@@ -17,9 +17,9 @@ public class Model {
     public Model(){
         this.onlyOneInstance(); // Limit to only 1 instance of the Model class
         environment = new Environment();
-        graph = new Graph("waypoint",environment);
-        //graph = new Graph("navmesh",environment);
-        pathfinding = new Pathfinding();
+        //graph = new Graph("waypoint",environment);
+        graph = new Graph("navmesh",environment);
+        pathfinding = new Pathfinding(graph);
     }
 
     private void onlyOneInstance (){
