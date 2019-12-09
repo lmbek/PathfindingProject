@@ -3,6 +3,7 @@ package files;
 import files.controllers.Input;
 import files.models.Graph;
 import files.models.Shape;
+import files.models.graph.Vertex;
 
 import java.util.ArrayList;
 
@@ -41,8 +42,10 @@ public class Controller {
     private void updateView(){
         ArrayList<Shape> shapes = model.getEnvironment().getShapes();
         Graph graph = model.getGraph();
+        ArrayList<Vertex> resultingPath = model.getPathfinding().getResult();
         view.getUI().getGraphic().setEnvironment(shapes);
         view.getUI().getGraphic().setGraph(graph);
+        view.getUI().getGraphic().setResultPath(resultingPath);
 
         run();
     }

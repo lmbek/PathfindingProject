@@ -4,6 +4,7 @@ import files.Model;
 import files.View;
 import files.models.Environment;
 import files.models.Shape;
+import files.models.graph.Vertex;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 
@@ -31,9 +32,12 @@ public class Input {
                     node.setOnMouseClicked(event -> {
                         model.getEnvironment().generateEnvironment();
                         model.getGraph().recalculate(model.getEnvironment());
+                        model.getPathfinding().run(model.getGraph());
+                        ArrayList<Vertex> resultPath = model.getPathfinding().getResult();
 
                         ArrayList<Shape> shape = model.getEnvironment().getShapes();
                         view.getUI().getGraphic().setEnvironment(shape);
+                        view.getUI().getGraphic().setResultPath(resultPath);
                         view.getUI().getGraphic().draw();
 
                     });
