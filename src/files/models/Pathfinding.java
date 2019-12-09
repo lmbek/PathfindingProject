@@ -15,8 +15,8 @@ public class Pathfinding {
     public void run (Graph graph){
         if(fastOrPrecise.equals("precise")){
             Dijkstra dijkstra = new Dijkstra(graph);
-            //dijkstra.start(graph,new Vertex("start",0,0),new Vertex("end",800,600)); // PLEZ EMIL xD give me the option to do dis
-            dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1)); // PLEZ EMIL xD give me the option to do dis
+            dijkstra.start(graph,new Vertex("start",0,0),new Vertex("end",800,600)); // PLEZ EMIL xD give me the option to do dis
+            //dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1)); // PLEZ EMIL xD give me the option to do dis
             ArrayList<Vertex> result = dijkstra.getResult();
             System.out.print("path is ");
             for(Vertex vertex : result){

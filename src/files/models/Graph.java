@@ -107,25 +107,26 @@ public class Graph {
 
         for(Vertex i : vertices){
             for(Vertex j : vertices){
-                boolean creatableRelation = true;
-                Vertex start = i;
-                Vertex end = j;
-                for(Shape object : environment.getShapes()){ // 4 operations if a rectangle
-                    for(Line2D obstacleLine : object.getLines()){
-                        if(obstacleLine.isIntersecting(new Line2D(new Point(start.getX(),start.getY()),new Point(end.getX(),end.getY())))){
-                            creatableRelation = false;
+                if(!i.equals(j)) {
+                    boolean creatableRelation = true;
+                    Vertex start = i;
+                    Vertex end = j;
+                    for (Shape object : environment.getShapes()) { // 4 operations if a rectangle
+                        for (Line2D obstacleLine : object.getLines()) {
+                            if (obstacleLine.isIntersecting(new Line2D(new Point(start.getX(), start.getY()), new Point(end.getX(), end.getY())))) {
+                                creatableRelation = false;
+
+                            }
 
                         }
-
+                    }
+                    // if we have creatable Relation, lets add it
+                    if (creatableRelation) {
+                        double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
+                        //distance = 5; // TODO: remove this and fix the distance formula
+                        newEdge(start, end, distance, distance); // from, to, distance, time
                     }
                 }
-                // if we have creatable Relation, lets add it
-                if(creatableRelation){
-                    double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
-                    distance = 5; // TODO: remove this and fix the distance formula
-                    newEdge(start,end, distance,  distance); // from, to, distance, time
-                }
-
 
             }
         }

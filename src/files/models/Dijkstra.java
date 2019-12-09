@@ -16,6 +16,7 @@ public class Dijkstra {
     public ArrayList<Vertex> start(Graph graph, Vertex startNode, Vertex endNode) {
 
         TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingDouble(Vertex::getDistance));
+        Vertex successor = null;
 
         for (Vertex vertex : graph.getVertices()) {
             vertex.setDistance(infinity);
@@ -27,23 +28,30 @@ public class Dijkstra {
 
         while (graphTreeSet.size() != 0) {
             current = graphTreeSet.first();
-            System.out.println("  CURRENT:  " + current.name);
+            System.out.println("  CURRENT:  " + current);
+
+            if (endNode.predecessor != null && endNode.distance < current.distance){
+                System.out.println("solution");
+                break;
+            }
 
             for (Edge edge : current.edges) {
 
-                if (current.distance != infinity && edge.distance + current.distance < edge.getToVertex().distance) {
-                    edge.getToVertex().setDistance(edge.distance + current.distance);
-                    edge.getToVertex().setPredecessor(current);
-                    graphTreeSet.remove(edge.getToVertex());
-                    graphTreeSet.add(edge.getToVertex());
+                successor = edge.getToVertex();
+
+                if (current.distance != infinity && (edge.distance + current.distance) < successor.distance) {
+                    graphTreeSet.remove(successor);
+                    successor.setDistance(edge.distance + current.distance);
+                    successor.setPredecessor(current);
+                    graphTreeSet.add(successor);
                 }
 
                 System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
-                        + "  dist:  " + edge.getToVertex().distance);
+                        + "  dist:  " + (current.distance + edge.getToVertex().distance));
             }
 
             graphTreeSet.remove(current);
-            System.out.println("removed:  " +current.name);
+            System.out.println("removed:  " +current);
         }
 
         Vertex resultCurrent = endNode;

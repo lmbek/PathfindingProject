@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public class Environment {
-    int size = 50;
+    int size = 150;
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
     public Environment() {
