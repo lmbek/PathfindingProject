@@ -137,17 +137,17 @@ public class AStar {
 
         int counter = 0;
 
-        //loop:
+        loop:
         while (openTreeSet.size() != 0) {
             current = openTreeSet.first();
             if (openTreeSet.contains(current)) System.out.println("Working");
 
-
+/*
             if (current == endNode){
                 System.out.println("solution found " + current.name + "  " + current.predecessor.name);
                 break;
             }
-
+*/
 
             for (Edge edge : current.edges){
 
@@ -156,32 +156,39 @@ public class AStar {
                 double successorH = heuristic(current,endNode);
                 double successorF = successorG + successorH;
 
-                /*
+
                 if (successor == endNode){
+                    System.out.println("Updated predecessor of:  " +successor.name + " is " + current.name);
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
                     System.out.println("solution found ");
                     break loop;
                 }
-                */
+
 
                 if (openTreeSet.contains(successor)){
                     if (successorF < successor.f) {
                         openTreeSet.remove(successor);
                         successor.setDistance(successorG);
                         successor.setF(successorF);
-                        //successor.setPredecessor(current);
-                        System.out.println("Predecessor:  " + current.name);
+                        successor.setPredecessor(current);
+                        System.out.println("Updated predecessor of:  " +successor.name + " is " + current.name);
                         openTreeSet.add(successor);
+                        if (current.predecessor == successor) {
+                            System.out.println("shit");
+                            break loop;
+                        }
                     }
                 } else if (closedList.contains(successor)){
-                    if (successorF < successor.f) {
+                    /*if (successorF < successor.f) {
                         closedList.remove(successor);
+                        System.out.println("reinserted on open:  " + successor.name);
                         openTreeSet.add(successor);
-                    }
+                    }*/
                 } else if (openTreeSet.first() != successor){
                     successor.setPredecessor(current);
+                    System.out.println("Predecessor of:  " +successor.name + " is " + current.name);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
                     openTreeSet.add(successor);
@@ -191,14 +198,13 @@ public class AStar {
                 + "  fValue: " + successorF);
             }
             openTreeSet.remove(current);
-            System.out.println("removed:  " + current);
+            System.out.println("removed:  " + current.name);
             /*if (openTreeSet.first() == current){
                 System.out.println("current on first:  " + current);
             } else if (openTreeSet.contains(current)){
                 System.out.println("current contained:  " + current);
             }*/
             closedList.add(current);
-            System.out.println("current on closed: " + current);
             //counter++;
         }
 
@@ -211,6 +217,7 @@ public class AStar {
             resultCurrent = resultCurrent.predecessor;
             Path.add(0,resultCurrent);
             System.out.println("ADDED:  " + resultCurrent.name);
+            counter++;
 
         }
         System.out.println("returning path");
