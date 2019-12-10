@@ -1,4 +1,4 @@
-package files.views.environment;
+package files.models.geometry;
 
 import files.interfaces.Environment;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,13 +15,13 @@ import javafx.scene.text.TextAlignment;
 public class Text implements Environment {
 
     public String text;
-    public int x,y,size;
+    public double x,y,size;
     public Color color;
     public FontWeight weight;
     public String fontName = "Verdana";
 
 
-    public Text (String text, int x, int y, int size, Color color) {
+    public Text (String text, double x, double y, int size, Color color) {
         this.text = text;
         this.x = x;
         this.y = y;
@@ -29,7 +29,7 @@ public class Text implements Environment {
         this.color = color;
     }
 
-    public Text (String text, int x, int y, int size, Color color, FontWeight weight, String fontName) {
+    public Text (String text, double x, double y, int size, Color color, FontWeight weight, String fontName) {
         this.text = text;
         this.x = x;
         this.y = y;
@@ -51,5 +51,10 @@ public class Text implements Environment {
         gc.fillText(text, x, y);
 
 
+    }
+
+    @Override
+    public boolean isColliding(Point point) {
+        return false;
     }
 }

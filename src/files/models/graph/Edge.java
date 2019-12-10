@@ -1,12 +1,13 @@
 package files.models.graph;
 
+import files.models.geometry.Line2D;
 import files.models.graph.Vertex;
 
 public class Edge {
     private Vertex from;
     private Vertex to;
-    public int distance=0;
-    public int time=0;
+    public double distance=0;
+    public double time=0;
 
     public Vertex getToVertex() {
         return this.to;

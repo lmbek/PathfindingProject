@@ -8,18 +8,13 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 public class AStar {
-
     private Graph graph;
-    int infinity = (int) Double.POSITIVE_INFINITY;
+    private final int infinity = (int) Double.POSITIVE_INFINITY;
+    private ArrayList<Vertex> result;
 
-    public static void main(String[] args) {
-        AStar aStar = new AStar();
-        aStar.startAStar();
-    }
+    public AStar(Graph graph) {
 
-    public void startAStar() {
-
-        graph = this.makeSmallGraphA();
+        //graph = this.makeSmallGraphA();
         /*
         // Create graph
         //graph = this.makeDijkstraGraph();
@@ -81,25 +76,27 @@ public class AStar {
     }
 */
         // A
-        Vertex startNode = graph.getVertex("A");
-        Vertex endNode = graph.getVertex("E");
+        //Vertex startNode = graph.getVertex("A");
+        //Vertex endNode = graph.getVertex("E");
 
         // B
         //Vertex startNode = graph.getVertex("J");
         //Vertex endNode = graph.getVertex("F");
 
-        ArrayList<Vertex> result = aStar(startNode, endNode);
+        //ArrayList<Vertex> result = start(graph, startNode, endNode);
 
-        for(Vertex v : result) {
-            System.out.print( v.name + " Dist:" + v.distance + " ");
-            if (v!=endNode)
-                System.out.print("-> ");
-        }
+        //for(Vertex v : result) {
+        //    System.out.print( v.name + " Dist:" + v.distance + " ");
+        //    if (v!=endNode)
+        //        System.out.print("-> ");
+        //}
 
 
     }
 
     public Graph makeSmallGraphA() {
+        // TODO: take this graph
+        /*
         Graph myGraph= new Graph();
         final Vertex A= myGraph.addVertex("A");
         final Vertex B= myGraph.addVertex("B");
@@ -118,12 +115,14 @@ public class AStar {
         myGraph.newEdge(E,D, 4,  3);
 
         return myGraph;
+
+         */ return null;
     }
 
 
-    public ArrayList<Vertex> aStar(Vertex startNode, Vertex endNode) {
+    public ArrayList<Vertex> start(Graph graph, Vertex startNode, Vertex endNode) {
 
-        TreeSet<Vertex> openTreeSet = new TreeSet<>(Comparator.comparingLong(Vertex::getF));
+        TreeSet<Vertex> openTreeSet = new TreeSet<>(Comparator.comparingDouble(Vertex::getF));
         ArrayList<Vertex> closedList = new ArrayList<>();
 
         for (Vertex vertex : graph.getVertices()) {
@@ -132,49 +131,55 @@ public class AStar {
         }
 
         startNode.setDistance(0);
-        startNode.setF(startNode.distance + heuristic(0, endNode));
+        startNode.setF(startNode.distance + heuristic(startNode, endNode)); // TODO: temporary...?
         openTreeSet.add(startNode);
         Vertex current;
+
+        int counter = 0;
 
         loop:
         while (openTreeSet.size() != 0) {
             current = openTreeSet.first();
-            openTreeSet.remove(current);
 
-            /*
+/*
             if (current == endNode){
-                System.out.println("solution found " + current.name + current.predecessor.name);
+                System.out.println("solution found " + current.name + "  " + current.predecessor.name);
                 break;
             }
-            */
+*/
 
             for (Edge edge : current.edges){
 
                 Vertex successor = edge.getToVertex();
-                int successorG = current.distance + edge.distance;
-                long successorH = heuristic(current.distance,endNode);
-                long successorF = successorG + successorH;
+                double successorG = current.distance + edge.distance;
+                double successorH = heuristic(successor,endNode);
+                double successorF = successorG + successorH;
+
 
                 if (successor == endNode){
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
-                    System.out.println("solution found " + successor.name + successor.predecessor.name);
+                    System.out.println("solution found ");
                     break loop;
                 }
 
-                if (openTreeSet.contains(successor) && successorF < successor.f){
-                    successor.setPredecessor(current);
-                    successor.setDistance(successorG);
-                    successor.setF(successorF);
-                    openTreeSet.remove(successor);
-                    openTreeSet.add(successor);
-                } else if (closedList.contains(successor)){
+
+                if (openTreeSet.contains(successor)){
                     if (successorF < successor.f) {
-                        closedList.remove(successor);
+                        openTreeSet.remove(successor);
+                        successor.setDistance(successorG);
+                        successor.setF(successorF);
+                        successor.setPredecessor(current);
                         openTreeSet.add(successor);
                     }
-                } else {
+                } else if (closedList.contains(successor)){
+                    /*if (successorF < successor.f) {
+                        closedList.remove(successor);
+                        System.out.println("reinserted on open:  " + successor.name);
+                        openTreeSet.add(successor);
+                    }*/
+                } else if (openTreeSet.first() != successor){
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
@@ -182,9 +187,10 @@ public class AStar {
                 }
                 System.out.println("evaluated: " + edge.getFromVertex().name
                 + "  going to: " + edge.getToVertex().name
-                + "  fValue: " + successorF
-                + "  removed: " +current.name);
+                + "  fValue: " + successorF);
             }
+            openTreeSet.remove(current);
+            System.out.println("removed:  " + current.name);
             closedList.add(current);
         }
 
@@ -195,12 +201,18 @@ public class AStar {
         while ((resultCurrent != startNode) && (resultCurrent.predecessor != null)) {
             resultCurrent = resultCurrent.predecessor;
             Path.add(0,resultCurrent);
+
         }
+        this.result = Path;
         return Path;
     }
 
-    public long heuristic(int dist, Vertex endNode) {
-        //return sqrt(pow(endNode.x - current.x, 2) + pow(endNode.y - current.y, 2));
-        return 9-dist;
+    private double heuristic(Vertex start, Vertex end) {
+        return Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2)+1);
+        //return 9-dist;
+    }
+
+    public ArrayList<Vertex> getResult() {
+        return result;
     }
 }

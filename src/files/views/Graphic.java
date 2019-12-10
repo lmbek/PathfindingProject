@@ -1,10 +1,14 @@
 package files.views;
 
+import files.interfaces.Overlay;
 import files.models.Graph;
-import files.interfaces.Environment;
-import files.views.environment.Circle;
-import files.views.environment.Text;
-import files.views.environment.Wall;
+import files.models.Shape;
+import files.models.geometry.Circle;
+import files.models.geometry.Line2D;
+import files.models.geometry.Point;
+import files.models.geometry.Text;
+import files.models.graph.Vertex;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.FontWeight;
@@ -14,50 +18,50 @@ import java.util.ArrayList;
 // TODO: remove this.draw() from Graphic constructor, implement Environment on Graphic class and use the draw method in View or UI
 public class Graphic {
     GraphicsContext graphicsContext;
-    private ArrayList<Environment> environment = new ArrayList<Environment>();
+    private ArrayList<Shape> environment = new ArrayList<>();
     private Graph graph;
+    private ArrayList<Vertex> resultPath;
 
     public Graphic(GraphicsContext graphicsContext){
         this.graphicsContext = graphicsContext;
-        this.insertHardcodedData();
     }
 
-    public void insertHardcodedData(){
-        Wall wall = new Wall(50,50,100,100,Color.DARKGREY,Color.BLACK, 3);
-        Wall wall2 = new Wall(250,40,50,150,Color.DARKGREY, Color.BLACK, 3);
-
-
-        environment.add(wall);
-        environment.add(wall2);
-
+    public void setEnvironment(ArrayList<Shape> shapes){
+        this.environment = shapes;
     }
-
-    public void convertToGraphics(){
-
+    public void setGraph(Graph graph) {
+        this.graph = graph;
+    }
+    public void setResultPath(ArrayList<Vertex> resultPath) {
+        this.resultPath = resultPath;
     }
 
     public void draw(){
-        // add graph
+        Canvas canvas = graphicsContext.getCanvas();
+        graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-
-        int vertex = 2;
-        //for (Vertex vertex : vertices) {
-        for(int i=0; i<vertex; i++){
-            Circle circle = new Circle(140 + (50 * i), 240, 28, Color.WHITE, Color.BLACK, 1);
-            Text text = new Text(i+"", 154 + (50 * i), 259, 16, Color.BLACK, FontWeight.BOLD, null);
-            environment.add(circle);
-            environment.add(text);
-        }
-        //}
-
-
+        // Environment
         for (int i = 0; i < environment.size(); i++) {
-            environment.get(i).draw(this.graphicsContext); // Draw all the graphics
-            //System.out.println(environment.get(i).getClass().getSimpleName());
+            environment.get(i).draw(this.graphicsContext);
         }
-    }
 
-    public void setGraph(Graph graph) {
-        this.graph = graph;
+        // Graph shapes
+        ArrayList<Overlay> overlay = graph.getShapes();
+
+        if(graph!=null&&graph.getVertices().size()>0){
+            for(Overlay shape : overlay){
+                shape.draw(graphicsContext);
+            }
+        }
+
+        if(resultPath!=null){
+            for(int i=0; i<resultPath.size()-1; i++){
+                Point from = new Point(resultPath.get(i).getX(),resultPath.get(i).getY());
+                Point to = new Point(resultPath.get(i+1).getX(),resultPath.get(i+1).getY());
+                Line2D line = new Line2D(from,to);
+                line.draw(graphicsContext);
+            }
+        }
+
     }
 }

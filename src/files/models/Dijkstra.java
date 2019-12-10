@@ -6,84 +6,17 @@ import files.models.graph.Vertex;
 import java.util.*;
 
 public class Dijkstra {
+    private final int infinity = (int) Double.POSITIVE_INFINITY;
+    private ArrayList<Vertex> result;
 
-    private Graph graph;
-
-    int infinity = (int) Double.POSITIVE_INFINITY;
-
-
-    public static void main(String[] args) {
-        Dijkstra dijkstra = new Dijkstra();
-        dijkstra.startDijkstra();
-    }
-
-    public void startDijkstra() {
-        // Create graph
-        //graph = this.makeDijkstraGraph();
-        graph = this.makeSmallGraphB();
-        // A
-        //Vertex startNode = graph.getVertex("A");
-        //Vertex endNode = graph.getVertex("E");
-
-        // B
-        Vertex startNode = graph.getVertex("J");
-        Vertex endNode = graph.getVertex("F");
-
-        ArrayList<Vertex> result = dijkstra(startNode, endNode);
-
-        for(Vertex v : result) {
-            System.out.print( v.name + " Dist:" + v.distance + " ");
-            if (v!=endNode)
-                System.out.print("-> ");
-        }
+    public Dijkstra(Graph graph) {
 
     }
 
+    public ArrayList<Vertex> start(Graph graph, Vertex startNode, Vertex endNode) {
 
-    public Graph makeSmallGraphB() {
-        Graph myGraph = new Graph();
-        final Vertex A = myGraph.addVertex("A");
-        final Vertex B = myGraph.addVertex("B");
-        final Vertex C = myGraph.addVertex("C");
-        final Vertex D = myGraph.addVertex("D");
-        final Vertex E = myGraph.addVertex("E");
-        final Vertex F = myGraph.addVertex("F");
-        final Vertex G = myGraph.addVertex("G");
-        final Vertex H = myGraph.addVertex("H");
-        final Vertex I = myGraph.addVertex("I");
-        final Vertex J = myGraph.addVertex("J");
-
-        myGraph.newEdge(A, B, 10, 0);
-        myGraph.newEdge(A, D, 20, 0);
-        myGraph.newEdge(A, E, 20, 0);
-        myGraph.newEdge(A, F, 5, 0);
-        myGraph.newEdge(A, G, 15, 0);
-        myGraph.newEdge(B, C, 7, 0);
-        myGraph.newEdge(B, D, 10, 0);
-        myGraph.newEdge(C, B, 15, 0);
-        myGraph.newEdge(C, D, 5, 0);
-        myGraph.newEdge(D, E, 10, 0);
-        myGraph.newEdge(E, F, 5, 0);
-        myGraph.newEdge(G, F, 10, 0);
-        myGraph.newEdge(H, A, 5, 0);
-        myGraph.newEdge(H, B, 20, 0);
-        myGraph.newEdge(H, G, 5, 0);
-        myGraph.newEdge(I, B, 15, 0);
-        myGraph.newEdge(I, H, 20, 0);
-        myGraph.newEdge(I, J, 10, 0);
-        myGraph.newEdge(J, B, 5, 0);
-        myGraph.newEdge(J, C, 15, 0);
-
-        return myGraph;
-    }
-
-////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////// TODO: Implement new dijkstra 25-11-2019 //////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////
-
-    public ArrayList<Vertex> dijkstra(Vertex startNode, Vertex endNode) {
-
-        TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingInt(Vertex::getDistance));
+        TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingDouble(Vertex::getDistance));
+        Vertex successor;
 
         for (Vertex vertex : graph.getVertices()) {
             vertex.setDistance(infinity);
@@ -95,33 +28,45 @@ public class Dijkstra {
 
         while (graphTreeSet.size() != 0) {
             current = graphTreeSet.first();
-            System.out.println("  CURRENT:  " + current.name);
+            System.out.println("  CURRENT:  " + current.name + " " + current.distance);
+            System.out.println("  ENDNODE:  " + endNode.name + "  " + endNode.distance);
 
-            for (Edge edge : current.edges) {
 
-                if (current.distance != infinity && edge.distance + current.distance < edge.getToVertex().distance) {
-                    edge.getToVertex().setDistance(edge.distance + current.distance);
-                    edge.getToVertex().setPredecessor(current);
-                    graphTreeSet.remove(edge.getToVertex());
-                    graphTreeSet.add(edge.getToVertex());
+            if (current.distance < endNode.distance) {
+
+                for (Edge edge : current.edges) {
+
+                    successor = edge.getToVertex();
+
+                    if (current.distance != infinity && (edge.distance + current.distance) < successor.distance) {
+                        graphTreeSet.remove(successor);
+                        successor.setDistance(edge.distance + current.distance);
+                        successor.setPredecessor(current);
+                        graphTreeSet.add(successor);
+                    }
+
+                    System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
+                            + "  dist:  " + (current.distance + edge.getToVertex().distance));
                 }
-
-                System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
-                        + "  dist:  " + edge.getToVertex().distance);
-            }
-
+            } else System.out.println("skipped: " + current.name);
             graphTreeSet.remove(current);
-            System.out.println("removed:  " +current.name);
-        }
+            System.out.println("removed:  " + current);
 
+        }
         Vertex resultCurrent = endNode;
-        ArrayList<Vertex> Path= new ArrayList<>();
+        ArrayList<Vertex> Path = new ArrayList<>();
         Path.add(endNode);
 
         while ((resultCurrent != startNode) && (resultCurrent.predecessor != null)) {
             resultCurrent = resultCurrent.predecessor;
-            Path.add(0,resultCurrent);
+            Path.add(0, resultCurrent);
         }
+
+        result = Path;
         return Path;
+    }
+
+    public ArrayList<Vertex> getResult() {
+        return result;
     }
 }
