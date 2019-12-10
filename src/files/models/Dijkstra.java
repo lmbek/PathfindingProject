@@ -16,7 +16,7 @@ public class Dijkstra {
     public ArrayList<Vertex> start(Graph graph, Vertex startNode, Vertex endNode) {
 
         TreeSet<Vertex> graphTreeSet = new TreeSet<>(Comparator.comparingDouble(Vertex::getDistance));
-        Vertex successor = null;
+        Vertex successor;
 
         for (Vertex vertex : graph.getVertices()) {
             vertex.setDistance(infinity);
