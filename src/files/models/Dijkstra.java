@@ -28,39 +28,38 @@ public class Dijkstra {
 
         while (graphTreeSet.size() != 0) {
             current = graphTreeSet.first();
-            System.out.println("  CURRENT:  " + current);
+            System.out.println("  CURRENT:  " + current.name + " " + current.distance);
+            System.out.println("  ENDNODE:  " + endNode.name + "  " + endNode.distance);
 
-            if (endNode.predecessor != null && endNode.distance < current.distance){
-                System.out.println("solution");
-                break;
-            }
 
-            for (Edge edge : current.edges) {
+            if (current.distance < endNode.distance) {
 
-                successor = edge.getToVertex();
+                for (Edge edge : current.edges) {
 
-                if (current.distance != infinity && (edge.distance + current.distance) < successor.distance) {
-                    graphTreeSet.remove(successor);
-                    successor.setDistance(edge.distance + current.distance);
-                    successor.setPredecessor(current);
-                    graphTreeSet.add(successor);
+                    successor = edge.getToVertex();
+
+                    if (current.distance != infinity && (edge.distance + current.distance) < successor.distance) {
+                        graphTreeSet.remove(successor);
+                        successor.setDistance(edge.distance + current.distance);
+                        successor.setPredecessor(current);
+                        graphTreeSet.add(successor);
+                    }
+
+                    System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
+                            + "  dist:  " + (current.distance + edge.getToVertex().distance));
                 }
-
-                System.out.println("Evaluating:  " + edge.getFromVertex().name + "  ->  " + edge.getToVertex().name
-                        + "  dist:  " + (current.distance + edge.getToVertex().distance));
-            }
-
+            } else System.out.println("skipped: " + current.name);
             graphTreeSet.remove(current);
-            System.out.println("removed:  " +current);
-        }
+            System.out.println("removed:  " + current);
 
+        }
         Vertex resultCurrent = endNode;
-        ArrayList<Vertex> Path= new ArrayList<>();
+        ArrayList<Vertex> Path = new ArrayList<>();
         Path.add(endNode);
 
         while ((resultCurrent != startNode) && (resultCurrent.predecessor != null)) {
             resultCurrent = resultCurrent.predecessor;
-            Path.add(0,resultCurrent);
+            Path.add(0, resultCurrent);
         }
 
         result = Path;
