@@ -79,7 +79,7 @@ public class Graph {
                     // if we have creatable Relation, lets add it
                     if(creatableRelation){
                         double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
-                        distance = 5; // TODO: remove this and fix the distance formula
+                        //distance = 5; // TODO: remove this and fix the distance formula
                         System.out.println("distance:" + distance);
                         newEdge(start,end, distance,  distance); // from, to, distance, time
                     }

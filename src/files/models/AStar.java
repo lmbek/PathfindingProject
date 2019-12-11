@@ -174,12 +174,14 @@ public class AStar {
                         openTreeSet.add(successor);
                     }
                 } else if (closedList.contains(successor)){
-                    /*if (successorF < successor.f) {
-                        closedList.remove(successor);
-                        System.out.println("reinserted on open:  " + successor.name);
-                        openTreeSet.add(successor);
-                    }*/
-                } else if (openTreeSet.first() != successor){
+                    /*
+                    if (successorF < successor.f) {
+                    closedList.remove(successor);
+                    System.out.println("reinserted on open:  " + successor.name);
+                    openTreeSet.add(successor);
+                    }
+                    */
+                } else {
                     successor.setPredecessor(current);
                     successor.setDistance(successorG);
                     successor.setF(successorF);
@@ -208,7 +210,9 @@ public class AStar {
     }
 
     private double heuristic(Vertex start, Vertex end) {
-        return Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2)+1);
+        double deltaX =  Math.abs(start.getX() - end.getX());
+        double deltaY =  Math.abs(start.getY() - end.getY());
+        return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
         //return 9-dist;
     }
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Pathfinding {
     private ArrayList<Vertex> result;
-    String fastOrPrecise = "precise";
+    String fastOrPrecise = "fast";
 
     public Pathfinding(Graph graph){
         run(graph);
@@ -29,6 +29,9 @@ public class Pathfinding {
             AStar aStar = new AStar(graph);
             aStar.start(graph, graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
             ArrayList<Vertex> result = aStar.getResult();
+            for(Vertex vertex : result){
+                System.out.print("->"+ vertex.name);
+            }
             this.result = result;
             // TODO: add result so we can print the line
         }
