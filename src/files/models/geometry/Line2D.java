@@ -40,9 +40,8 @@ public class Line2D extends Shape implements Environment {
             double numerator1 = ((startY - otherStartY) * (otherEndX - otherStartX)) - ((startX - otherStartX) * (otherEndY - otherStartY));
             double numerator2 = ((startY - otherStartY) * (endX - startX)) - ((startX - otherStartX) * (endY - startY));
 
-            // Detect coincident lines (has a problem, read below)
-            if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
-
+            // Detect coincident lines // comment lined, as it made bugs. Computer will replace 0 for us when dividing, so no need for this.
+            //if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
             double r = numerator1 / denominator;
             double s = numerator2 / denominator;
 

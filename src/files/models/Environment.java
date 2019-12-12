@@ -29,25 +29,27 @@ public class Environment {
             Color borderColor = Color.BLACK;
             int borderSize = 2;
             Rectangle2D newShape = new Rectangle2D(x, y, width, height, backgroundColor, borderColor, borderSize);
+            double margin = 10;
+            Rectangle2D marginCheckNewShape = new Rectangle2D(x-margin, y-margin, width+margin*2, height+margin*2, backgroundColor, borderColor, borderSize);
 
             boolean creatable = true;
 
             for(Shape shape : shapes) {
                 for(Point point : shape.getPoints()){
-                    if(newShape.isColliding(point)) { // for every points check if new shape is colliding with shape point
+                    if(marginCheckNewShape.isColliding(point)) { // for every points check if new shape is colliding with shape point
                         creatable = false;
                     }
                 }
             }
 
             for(Shape shape : shapes) {
-                for(Point point : newShape.getPoints()){
+                for(Point point : marginCheckNewShape.getPoints()){
                     if(shape.isColliding(point)) { // for every shape points check if shape is colliding with new shape point
                         creatable = false;
                     }
                 }
                 for(Line2D line : shape.getLines()){
-                    for(Line2D newLine : newShape.getLines()){
+                    for(Line2D newLine : marginCheckNewShape.getLines()){
                         if(newLine.isIntersecting(line)) {
                             creatable = false;
                         }

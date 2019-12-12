@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Pathfinding {
     private ArrayList<Vertex> result;
-    String fastOrPrecise = "fast";
+    String fastOrPrecise = "precise";
 
     public Pathfinding(Graph graph){
         run(graph);

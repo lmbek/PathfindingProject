@@ -59,6 +59,7 @@ public class Rectangle2D extends Shape implements Environment {
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
+
         if(bgColor!=null) {
             graphicsContext.setFill(bgColor);
         }
@@ -70,6 +71,7 @@ public class Rectangle2D extends Shape implements Environment {
             graphicsContext.strokeRect(position.getX(),position.getY(),size.getX(),size.getY());
             graphicsContext.setStroke(borderColor);
         }
+
     }
 
     public Point getA() {

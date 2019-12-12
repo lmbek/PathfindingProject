@@ -115,7 +115,6 @@ public class Graph {
                         for (Line2D obstacleLine : object.getLines()) {
                             if (obstacleLine.isIntersecting(new Line2D(new Point(start.getX(), start.getY()), new Point(end.getX(), end.getY())))) {
                                 creatableRelation = false;
-
                             }
 
                         }
