@@ -33,7 +33,6 @@ public class Pathfinding {
                 System.out.print("->"+ vertex.name);
             }
             this.result = result;
-            // TODO: add result so we can print the line
         }
     }
 

@@ -27,8 +27,8 @@ public class Environment {
             // Set x and y after width and height, as we need to fix the location.
             double x = Math.round(10+Math.random() * (800-120));
             double y = Math.round(10+Math.random() * (600-160));
-            Color backgroundColor = Color.LIGHTGRAY;
-            Color borderColor = Color.GRAY;
+            Color backgroundColor = Color.color(0.7,0.7,0.7);
+            Color borderColor = Color.color(0.4,0.4,0.4);
             int borderSize = 2;
             Rectangle2D newShape = new Rectangle2D(x, y, width, height, backgroundColor, borderColor, borderSize);
             Rectangle2D marginCheckNewShape = new Rectangle2D(x-margin, y-margin, width+margin*2, height+margin*2, backgroundColor, borderColor, borderSize);

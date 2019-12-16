@@ -78,7 +78,6 @@ public class Line2D extends Shape implements Environment {
 
     @Override
     public void draw(GraphicsContext gc) {
-        //gc.setFill(Color.BLACK);
         gc.setStroke(color);
         gc.setLineWidth(borderWidth);
         gc.beginPath();

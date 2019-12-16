@@ -12,6 +12,7 @@ public class Graph {
     private ArrayList<Overlay> shapes = new ArrayList<>();
     private String type;
     private int waypointSize = 50;
+    private int waypointMargin = 50;
 
     public Graph(String type, Environment environment){
         this.type = type;
@@ -38,7 +39,8 @@ public class Graph {
             double y = Math.round(10+Math.random() * (560));
 
             for(Vertex vertex : vertices){ // check environment
-                if(50>Math.sqrt(Math.pow(vertex.getX() - x, 2) + Math.pow(vertex.getY() - y, 2))){
+
+                if(waypointMargin>Math.sqrt(Math.pow(vertex.getX() - x, 2) + Math.pow(vertex.getY() - y, 2))){
                     creatable = false;
                 }
             }
