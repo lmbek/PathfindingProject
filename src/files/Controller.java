@@ -16,7 +16,6 @@ public class Controller {
     Controller(Model model, View view){
         this.onlyOneInstance();
         this.model = model;
-
         this.view = view;
         this.input = new Input(model,view,this);
         this.update();
@@ -34,16 +33,16 @@ public class Controller {
 
     public void update(){
         model.getGraph().recalculate(model.getEnvironment());
-        Graph graph = model.getGraph();
-        ArrayList<Shape> shapes = model.getEnvironment().getShapes();
-        view.getUI().getGraphic().setEnvironment(shapes);
-        view.getUI().getGraphic().setGraph(graph);
+        model.getPathfinding().state = "unset";
 
         updatePath();
     }
 
     public void updatePath(){
         Graph graph = model.getGraph();
+        ArrayList<Shape> shapes = model.getEnvironment().getShapes();
+        view.getUI().getGraphic().setEnvironment(shapes);
+        view.getUI().getGraphic().setGraph(graph);
         model.getPathfinding().run(graph);
         ArrayList<Vertex> resultPath = model.getPathfinding().getResult();
         view.getUI().getGraphic().setResultPath(resultPath);

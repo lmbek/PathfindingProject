@@ -13,14 +13,16 @@ public class Graph {
     private String type;
     private int waypointSize = 50;
     private int waypointMargin = 50;
+    private Vertex start;
+    private Vertex end;
 
     public Graph(String type, Environment environment){
         this.type = type;
         switch(type){
-            case "waypoint":
+            case "WayPoint":
                 waypointGraph(environment);
                 break;
-            case "navmesh":
+            case "NavMesh":
                 navMeshGraph(environment);
                 break;
             default:
@@ -126,12 +128,92 @@ public class Graph {
         shapes.clear();
 
         switch (type){
-            case "waypoint":
+            case "WayPoint":
                 waypointGraph(environment);
                 break;
-            case "navmesh":
+            case "NavMesh":
                 navMeshGraph(environment);
                 break;
+        }
+    }
+
+    public void setStart(Vertex start,Environment environment){
+        if(start==null&&this.start!=null){
+            this.start.edges.clear();
+        }
+        vertices.remove(this.start);
+        shapes.remove(this.start);
+        this.start = start;
+        if(start!=null) {
+            // Insert start and end nodes
+            vertices.add(start);
+            shapes.add(start);
+
+            // Create edges (relations)
+            for (Vertex other : vertices) {
+                if (!start.equals(other)) {
+                    boolean creatableRelation = true;
+                    for (Shape object : environment.getShapes()) { // 4 operations if a rectangle
+                        for (Line2D obstacleLine : object.getLines()) {
+                            if (obstacleLine.isIntersecting(new Line2D(new Point(start.getX(), start.getY()), new Point(other.getX(), other.getY())))) {
+                                creatableRelation = false;
+                            }
+
+                        }
+                    }
+                    // if we have creatable Relation, lets add it
+                    if (creatableRelation) {
+                        double distance = Math.sqrt(Math.pow(other.getX() - start.getX(), 2) + Math.pow(other.getY() - start.getY(), 2));
+                        newEdge(start, other, distance, distance); // from, to, distance, time
+                    }
+                    // Make the other direction also
+                    if (creatableRelation) {
+                        double distance = Math.sqrt(Math.pow(other.getX() - start.getX(), 2) + Math.pow(other.getY() - start.getY(), 2));
+                        newEdge(other, start, distance, distance); // from, to, distance, time
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void setEnd(Vertex end,Environment environment){
+        for(Vertex vertex : vertices){
+            vertex.edges.remove(this.end);
+        }
+        vertices.remove(this.end);
+        shapes.remove(this.end);
+        if(end!=null){
+            this.end = end;
+
+            vertices.add(end);
+            shapes.add(end);
+
+            // Create edges (relations)
+            for(Vertex other : vertices){
+                if(!other.equals(end)) {
+                    boolean creatableRelation = true;
+                    for (Shape object : environment.getShapes()) { // 4 operations if a rectangle
+                        for (Line2D obstacleLine : object.getLines()) {
+                            if (obstacleLine.isIntersecting(new Line2D(new Point(other.getX(), other.getY()), new Point(end.getX(), end.getY())))) {
+                                creatableRelation = false;
+                            }
+
+                        }
+                    }
+                    // if we have creatable Relation, lets add it
+                    if (creatableRelation) {
+                        double distance = Math.sqrt(Math.pow(end.getX() - other.getX(), 2) + Math.pow(end.getY() - other.getY(), 2));
+                        newEdge(other, end, distance, distance); // from, to, distance, time
+                    }
+                    // Make the other way also
+                    if (creatableRelation) {
+                        double distance = Math.sqrt(Math.pow(end.getX() - other.getX(), 2) + Math.pow(end.getY() - other.getY(), 2));
+                        newEdge(end, other, distance, distance); // from, to, distance, time
+                    }
+                }
+
+            }
         }
     }
 

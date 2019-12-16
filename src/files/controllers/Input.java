@@ -82,10 +82,42 @@ public class Input {
                     break;
                 case "canvas":
                     Canvas canvas = (Canvas) node;
+
                     canvas.setOnMouseClicked(event -> {
                         double x = event.getX();
                         double y = event.getY();
                         System.out.println("x:"+x+",y:"+y);
+                        Vertex start = new Vertex("start",x,y);
+                        Vertex end = new Vertex("end",x,y);
+                        switch (model.getPathfinding().state){
+                            case "unset":
+                                model.getGraph().setStart(start,model.getEnvironment());
+                                model.getGraph().setEnd(start,model.getEnvironment());
+                                model.getPathfinding().setStart(start);
+                                model.getPathfinding().setEnd(end);
+                                model.getPathfinding().state = "halfSet";
+                                controller.updatePath();
+                                break;
+                            case "halfSet":
+                                model.getGraph().setEnd(end,model.getEnvironment());
+                                model.getPathfinding().setEnd(new Vertex("end",x,y));
+                                model.getPathfinding().state = "set";
+                                controller.updatePath();
+                                break;
+                            case "set":
+                                model.getGraph().setStart(null,model.getEnvironment());
+                                model.getGraph().setEnd(null,model.getEnvironment());
+                                model.getPathfinding().setStart(null);
+                                model.getPathfinding().setEnd(null);
+                                model.getPathfinding().state = "unset";
+                                controller.updatePath();
+                                break;
+                            default:
+                                System.err.println("Got out of addEventListener states in the input class");
+                                System.exit(0);
+                            ;
+                        }
+                        System.out.println("state:"+ model.getPathfinding().state);
                     });
                     break;
                 case "button":
