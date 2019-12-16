@@ -1,14 +1,9 @@
 package files.models;
 import files.interfaces.Overlay;
-import files.models.geometry.Circle;
 import files.models.geometry.Line2D;
 import files.models.geometry.Point;
-import files.models.geometry.Text;
 import files.models.graph.Edge;
 import files.models.graph.Vertex;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
@@ -35,7 +30,6 @@ public class Graph {
     }
 
     public void waypointGraph(Environment environment){
-        // TODO: lets start with this first
         int id = 0;
 
         while (vertices.size()<waypointSize){
@@ -79,8 +73,6 @@ public class Graph {
                     // if we have creatable Relation, lets add it
                     if(creatableRelation){
                         double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
-                        //distance = 5; // TODO: remove this and fix the distance formula
-                        System.out.println("distance:" + distance);
                         newEdge(start,end, distance,  distance); // from, to, distance, time
                     }
                 }
@@ -90,13 +82,10 @@ public class Graph {
     }
 
     public void navMeshGraph(Environment environment){
-        // TODO: Lets take this second
         int id = 0;
         for(Shape object : environment.getShapes()){
             for(Point point : object.getGraphPoints()){
                 // Create vertex
-
-
                 Vertex vertex = addVertex(""+id, point.getX(), point.getY());
                 shapes.add(vertex);
                 id += 1;
@@ -104,7 +93,6 @@ public class Graph {
             }
         }
         // Create edges (relations)
-
         for(Vertex i : vertices){
             for(Vertex j : vertices){
                 if(!i.equals(j)) {
@@ -122,7 +110,6 @@ public class Graph {
                     // if we have creatable Relation, lets add it
                     if (creatableRelation) {
                         double distance = Math.sqrt(Math.pow(end.getX() - start.getX(), 2) + Math.pow(end.getY() - start.getY(), 2));
-                        //distance = 5; // TODO: remove this and fix the distance formula
                         newEdge(start, end, distance, distance); // from, to, distance, time
                     }
                 }

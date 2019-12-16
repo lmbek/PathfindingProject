@@ -6,14 +6,15 @@ import javafx.scene.paint.Color;
 
 public class Circle extends Shape implements Environment {
     private Point position;
-    private double radius, borderSize;
+    private double radius;
+    private double borderSize;
     private Color bgColor, borderColor;
 
     public Circle(Point position, int radius, Color bgColor) {
-        this(position,radius,bgColor,null,0);
+        this(position,radius,bgColor,Color.BLUE,1);
     }
 
-    public Circle (Point position, int radius, Color bgColor, Color borderColor, int borderSize) {
+    public Circle (Point position, int radius, Color bgColor, Color borderColor, double borderSize) {
         this.position = position;
         this.radius = radius;
         this.bgColor = bgColor;
@@ -23,6 +24,7 @@ public class Circle extends Shape implements Environment {
 
     @Override
     public void draw(GraphicsContext gc) {
+        gc.setStroke(borderColor);
         // draw oval/circle
         if(this.bgColor != null){
             gc.setFill(bgColor);
@@ -32,8 +34,14 @@ public class Circle extends Shape implements Environment {
         if(this.borderSize != 0){
             gc.setLineWidth(borderSize);
             gc.strokeOval(position.getX()-(radius/2),position.getY()-(radius/2),radius,radius);
-            gc.setStroke(borderColor);
+
+
         }
+    }
+
+    @Override
+    public void drawEdges(GraphicsContext graphicsContext) {
+
     }
 
     @Override

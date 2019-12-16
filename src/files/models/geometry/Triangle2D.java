@@ -70,4 +70,9 @@ public class Triangle2D extends Shape implements Environment {
     public void draw(GraphicsContext graphicsContext) {
 
     }
+
+    @Override
+    public void drawEdges(GraphicsContext graphicsContext) {
+
+    }
 }

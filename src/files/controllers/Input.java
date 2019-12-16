@@ -51,21 +51,6 @@ public class Input {
                     });
 */
                     break;
-                case "fullscreenButton":
-                    node.setOnMouseClicked(event -> {
-                        System.out.println("fullscreen "+fullScreen);
-                        fullScreen = !fullScreen;
-                        view.setMaximized(fullScreen);
-                    });
-
-                    node.setOnKeyPressed(event -> {
-                        System.out.println(event.getCode());
-                        if(event.getCode().equals(KeyCode.ENTER)) {
-                            // do something
-                            System.out.println("You Pressed Enter");
-                        }
-                    });
-                    break;
                 default:
                     break;
             }

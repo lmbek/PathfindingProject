@@ -5,23 +5,32 @@ import files.models.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import static java.lang.Double.NaN;
-
 public class Line2D extends Shape implements Environment {
     private Point start;
     private Point end;
     private Point[] points;
+    private Color color;
+    private int borderWidth;
 
     public Line2D(Point start, Point end) {
+        this(start,end,Color.BLUE);
+    }
+
+    public Line2D(Point start, Point end, Color color) {
+        this(start,end,color,1);
+    }
+
+    public Line2D(Point start, Point end, Color color, int borderWidth) {
         this.start = start;
         this.end = end;
         this.points = new Point[]{start,end};
+        this.color = color;
+        this.borderWidth = borderWidth;
     }
 
     public Point getStart() {
         return start;
     }
-
     public Point getEnd() {
         return end;
     }
@@ -69,11 +78,17 @@ public class Line2D extends Shape implements Environment {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
-        gc.setStroke(Color.BLACK);
+        //gc.setFill(Color.BLACK);
+        gc.setStroke(color);
+        gc.setLineWidth(borderWidth);
         gc.beginPath();
         gc.moveTo(start.getX(),start.getY());
         gc.lineTo(end.getX(),end.getY());
         gc.stroke();
+    }
+
+    @Override
+    public void drawEdges(GraphicsContext graphicsContext) {
+
     }
 }
