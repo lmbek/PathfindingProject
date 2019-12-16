@@ -11,6 +11,6 @@ class ModelTest {
     @Test
     void XTest(){
         //assertEquals(3, result);
-        //assertEquals("A guy with a brain","Lars Morten Bek");
+        //assertEquals("A","B");
     }
 }

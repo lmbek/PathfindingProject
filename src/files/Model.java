@@ -34,14 +34,13 @@ public class Model {
     public void setGraph(Graph graph) {
         this.graph = graph;
     }
-
     public Environment getEnvironment() {
         return environment;
     }
-
     public Pathfinding getPathfinding() {
         return pathfinding;
     }
+
     public void setPathfinding(String algorithm) {
         if(algorithm.equals("A*")){
             pathfinding = new Pathfinding(algorithm,graph);
@@ -55,14 +54,11 @@ public class Model {
         if(algorithm.equals("NavMesh")){
             environment = new Environment();
             environment.setMaxSize(150);
-            graph = new Graph("navmesh",environment);
+            graph = new Graph(algorithm,environment);
         } else if(algorithm.equals("WayPoint")){
             environment = new Environment();
             environment.setMaxSize(150);
-            graph = new Graph("waypoint",environment);
+            graph = new Graph(algorithm,environment);
         }
-
-
-
     }
 }

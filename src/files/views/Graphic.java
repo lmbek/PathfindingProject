@@ -45,9 +45,8 @@ public class Graphic {
         }
 
         // Graph shapes
-        ArrayList<Overlay> overlay = graph.getShapes();
-
         if(graph!=null&&graph.getVertices().size()>0){ //TODO: is these checks neccesary?
+            ArrayList<Overlay> overlay = graph.getShapes();
             for(Overlay shape : overlay){
                 if(showEdges) shape.drawEdges(this.graphicsContext);
             }

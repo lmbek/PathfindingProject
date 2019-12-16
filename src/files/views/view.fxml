@@ -68,7 +68,10 @@
       </HBox>
       <ScrollPane fx:id="scrollPane" maxHeight="600.0" maxWidth="800.0" pannable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 5px;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
          <content>
-            <Canvas fx:id="canvas" height="400.0" nodeOrientation="INHERIT" width="400.0" />
+            <Canvas fx:id="canvas" height="400.0" nodeOrientation="INHERIT" width="400.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Canvas>
          </content></ScrollPane>
    </children>
 </GridPane>

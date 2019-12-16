@@ -13,7 +13,7 @@ class ControllerTest {
     void TestingConstructor(){
 
         //assertEquals(3, result);
-        //assertEquals("A guy with a brain","Lars Morten Bek");
+        //assertEquals("A","B");
     }
 
 }
