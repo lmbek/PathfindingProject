@@ -16,12 +16,6 @@ public class Model {
 
     public Model(){
         this.onlyOneInstance(); // Limit to only 1 instance of the Model class
-        environment = new Environment();
-        environment.setMaxSize(150);
-        //graph = new Graph("waypoint",environment);
-        graph = new Graph("navmesh",environment);
-        pathfinding = new Pathfinding(graph);
-        // TODO: make pathfinding options
     }
 
     private void onlyOneInstance (){
@@ -47,5 +41,23 @@ public class Model {
 
     public Pathfinding getPathfinding() {
         return pathfinding;
+    }
+    public void setPathfinding(String algorithm) {
+        pathfinding = new Pathfinding(graph);
+    }
+
+    public void setGraphEnvironment(String algorithm){
+        if(algorithm.equals("NavMesh")){
+            environment = new Environment();
+            environment.setMaxSize(150);
+            graph = new Graph("navmesh",environment);
+        } else if(algorithm.equals("WayPoint")){
+            environment = new Environment();
+            environment.setMaxSize(150);
+            graph = new Graph("waypoint",environment);
+        }
+
+
+
     }
 }

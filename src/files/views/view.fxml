@@ -39,7 +39,7 @@
    <children>
       <HBox alignment="CENTER" maxHeight="40.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="600.0" prefHeight="40.0" spacing="20.0" style="-fx-background-color: #333333;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
          <children>
-            <CheckBox fx:id="showNodes" mnemonicParsing="false" text="Show Nodes" textFill="WHITE">
+            <CheckBox fx:id="showNodes" mnemonicParsing="false" selected="true" text="Show Nodes" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

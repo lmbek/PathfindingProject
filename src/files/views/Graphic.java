@@ -17,6 +17,8 @@ public class Graphic {
     GraphicsContext graphicsContext;
     private ArrayList<Shape> environment = new ArrayList<>();
     private Graph graph;
+    public boolean showNodes; // important note: is set in the Input class
+    public boolean showEdges; // important note: is set in the Input class
     private ArrayList<Vertex> resultPath;
 
     public Graphic(GraphicsContext graphicsContext){
@@ -47,11 +49,11 @@ public class Graphic {
 
         if(graph!=null&&graph.getVertices().size()>0){ //TODO: is these checks neccesary?
             for(Overlay shape : overlay){
-                shape.drawEdges(this.graphicsContext);
+                if(showEdges) shape.drawEdges(this.graphicsContext);
             }
 
             for(Overlay shape : overlay){
-                shape.draw(this.graphicsContext);
+                if(showNodes) shape.draw(this.graphicsContext);
             }
         }
 

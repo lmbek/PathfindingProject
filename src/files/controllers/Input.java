@@ -1,5 +1,6 @@
 package files.controllers;
 
+import files.Controller;
 import files.Model;
 import files.View;
 import files.models.Environment;
@@ -16,14 +17,14 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 public class Input {
-
-    private boolean fullScreen;
     private final Model model;
     private final View view;
+    private final Controller controller;
 
-    public Input(Model model, View view){
+    public Input(Model model, View view, Controller controller){
         this.model = model;
         this.view = view;
+        this.controller = controller;
 
         addEventListeners(view.getUI().getEventNodes());
     }
@@ -35,16 +36,21 @@ public class Input {
             switch(nodeName){
                 case "showNodes":
                     CheckBox showNodes = (CheckBox) node;
+                    view.getUI().getGraphic().showNodes = showNodes.isSelected();
                     showNodes.setOnAction(event -> {
-                        System.out.println("yeeyeye");
-
+                        boolean bool = showNodes.isSelected();
+                        view.getUI().getGraphic().showNodes = bool;
+                        view.getUI().getGraphic().draw();
                     });
 
                     break;
                 case "showEdges":
                     CheckBox showEdges = (CheckBox) node;
+                    view.getUI().getGraphic().showEdges = showEdges.isSelected();
                     showEdges.setOnAction(event -> {
-                        System.out.println("yeeyeye2");
+                        boolean bool = showEdges.isSelected();
+                        view.getUI().getGraphic().showEdges = bool;
+                        view.getUI().getGraphic().draw();
                     });
                     break;
                 case "selectField1":
@@ -54,6 +60,11 @@ public class Input {
                             "WayPoint"
                     );
                     selectGraph.setValue("NavMesh");
+                    model.setGraphEnvironment((String) selectGraph.getValue());
+                    selectGraph.setOnAction(event -> {
+                        model.setGraphEnvironment((String) selectGraph.getValue());
+                        controller.update();
+                    });
 
                     break;
                 case "selectField2":
@@ -63,7 +74,11 @@ public class Input {
                       "Dijkstra"
                     );
                     selectPathfinding.setValue("A*");
-
+                    model.setPathfinding((String) selectPathfinding.getValue());
+                    selectPathfinding.setOnAction(event -> {
+                        model.setPathfinding((String) selectPathfinding.getValue());
+                        controller.updatePath();
+                    });
                     break;
                 case "canvas":
                     Canvas canvas = (Canvas) node;
@@ -77,14 +92,7 @@ public class Input {
                     Button button = (Button) node;
                     button.setOnAction(event -> {
                         model.getEnvironment().generateEnvironment();
-                        model.getGraph().recalculate(model.getEnvironment());
-                        model.getPathfinding().run(model.getGraph());
-                        ArrayList<Vertex> resultPath = model.getPathfinding().getResult();
-
-                        ArrayList<Shape> shape = model.getEnvironment().getShapes();
-                        view.getUI().getGraphic().setEnvironment(shape);
-                        view.getUI().getGraphic().setResultPath(resultPath);
-                        view.getUI().getGraphic().draw();
+                        controller.update();
 
                     });
                     break;
