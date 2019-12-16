@@ -138,6 +138,15 @@ public class Graph {
     }
 
     public void setStart(Vertex start,Environment environment){
+        for(Vertex vertex : vertices){
+            if(vertex.edges!=null){
+                for(Edge edge : vertex.edges){
+                    if(edge.getToVertex().equals(this.start)){
+                        vertex.edges.remove(edge);
+                    }
+                }
+            }
+        }
         if(start==null&&this.start!=null){
             this.start.edges.clear();
         }

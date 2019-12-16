@@ -84,6 +84,7 @@ public class Input {
                     Canvas canvas = (Canvas) node;
 
                     canvas.setOnMouseClicked(event -> {
+                        /*
                         double x = event.getX();
                         double y = event.getY();
                         System.out.println("x:"+x+",y:"+y);
@@ -117,7 +118,10 @@ public class Input {
                                 System.exit(0);
                             ;
                         }
+
                         System.out.println("state:"+ model.getPathfinding().state);
+
+                         */
                     });
                     break;
                 case "button":
