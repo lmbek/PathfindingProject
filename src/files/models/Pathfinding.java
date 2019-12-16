@@ -20,8 +20,8 @@ public class Pathfinding {
         //if(start!=null&&end!=null){
             if(algorithm.equals("Dijkstra")){
                 Dijkstra dijkstra = new Dijkstra(graph);
-                //dijkstra.start(graph,start,end); // PLEZ EMIL xD give me the option to do dis
-                dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1)); // PLEZ EMIL xD give me the option to do dis
+                //dijkstra.start(graph,start,end);
+                dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
                 ArrayList<Vertex> result = dijkstra.getResult();
                 System.out.print("path is ");
                 for(Vertex vertex : result){
