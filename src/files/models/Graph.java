@@ -163,13 +163,6 @@ public class Graph {
                         double distance = Math.sqrt(Math.pow(other.getX() - start.getX(), 2) + Math.pow(other.getY() - start.getY(), 2));
                         newEdge(start, other, distance, distance); // from, to, distance, time
                     }
-                    /*
-                    // Make the other direction also
-                    if (creatableRelation) {
-                        double distance = Math.sqrt(Math.pow(other.getX() - start.getX(), 2) + Math.pow(other.getY() - start.getY(), 2));
-                        newEdge(other, start, distance, distance); // from, to, distance, time
-                    }
-                     */
                 }
 
             }
@@ -204,11 +197,6 @@ public class Graph {
                     if (creatableRelation) {
                         double distance = Math.sqrt(Math.pow(end.getX() - other.getX(), 2) + Math.pow(end.getY() - other.getY(), 2));
                         newEdge(other, end, distance, distance); // from, to, distance, time
-                    }
-                    // Make the other way also
-                    if (creatableRelation) {
-                        double distance = Math.sqrt(Math.pow(end.getX() - other.getX(), 2) + Math.pow(end.getY() - other.getY(), 2));
-                        newEdge(end, other, distance, distance); // from, to, distance, time
                     }
                 }
 
