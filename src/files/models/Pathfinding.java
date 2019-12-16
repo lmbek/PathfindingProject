@@ -6,14 +6,15 @@ import java.util.ArrayList;
 
 public class Pathfinding {
     private ArrayList<Vertex> result;
-    String fastOrPrecise = "precise";
+    private String algorithm;
 
-    public Pathfinding(Graph graph){
+    public Pathfinding(String algorithm, Graph graph){
+        this.algorithm = algorithm;
         run(graph);
     }
 
     public void run (Graph graph){
-        if(fastOrPrecise.equals("precise")){
+        if(algorithm.equals("Dijkstra")){
             Dijkstra dijkstra = new Dijkstra(graph);
             //dijkstra.start(graph,new Vertex("start",0,0),new Vertex("end",800,600)); // PLEZ EMIL xD give me the option to do dis
             dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1)); // PLEZ EMIL xD give me the option to do dis
@@ -25,7 +26,7 @@ public class Pathfinding {
             System.out.println();
             this.result = result;
 
-        } else if(fastOrPrecise.equals("fast")) {
+        } else if(algorithm.equals("A*")) {
             AStar aStar = new AStar(graph);
             aStar.start(graph, graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
             ArrayList<Vertex> result = aStar.getResult();

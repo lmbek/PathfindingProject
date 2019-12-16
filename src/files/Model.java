@@ -43,7 +43,12 @@ public class Model {
         return pathfinding;
     }
     public void setPathfinding(String algorithm) {
-        pathfinding = new Pathfinding(graph);
+        if(algorithm.equals("A*")){
+            pathfinding = new Pathfinding(algorithm,graph);
+        } else if(algorithm.equals("Dijkstra")){
+            pathfinding = new Pathfinding(algorithm,graph);
+        }
+
     }
 
     public void setGraphEnvironment(String algorithm){
