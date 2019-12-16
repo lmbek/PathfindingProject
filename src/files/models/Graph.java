@@ -35,31 +35,30 @@ public class Graph {
     public void waypointGraph(Environment environment){
         int id = 0;
 
-        while (vertices.size()<waypointSize){
+        while (vertices.size() < waypointSize) {
             boolean creatable = true;
-            double x = Math.round(10+Math.random() * (760));
-            double y = Math.round(10+Math.random() * (560));
+            double x = Math.round(10 + Math.random() * (760));
+            double y = Math.round(10 + Math.random() * (560));
 
-            for(Vertex vertex : vertices){ // check environment
+            for (Vertex vertex : vertices) { // check environment
 
-                if(waypointMargin>Math.sqrt(Math.pow(vertex.getX() - x, 2) + Math.pow(vertex.getY() - y, 2))){
+                if (waypointMargin > Math.sqrt(Math.pow(vertex.getX() - x, 2) + Math.pow(vertex.getY() - y, 2))) {
                     creatable = false;
                 }
             }
 
-            for(Shape object : environment.getShapes()){ // check environment
-                if(object.isColliding(new Point(x,y))){
+            for (Shape object : environment.getShapes()) { // check environment
+                if (object.isColliding(new Point(x, y))) {
                     creatable = false;
                 }
             }
-            if(creatable){
+            if (creatable) {
                 // if the nodes is not inside unallowed terrain
-                Vertex vertex = addVertex(""+id,x,y);
+                Vertex vertex = addVertex("" + id, x, y);
                 shapes.add(vertex);
                 id += 1;
             }
         }
-
         for(int i = 0; i<vertices.size(); i++){
             for(int j = 0; j<vertices.size(); j++){
                 boolean creatableRelation = true;
@@ -138,20 +137,9 @@ public class Graph {
     }
 
     public void setStart(Vertex start,Environment environment){
-        for(Vertex vertex : vertices){
-            if(vertex.edges!=null){
-                for(Edge edge : vertex.edges){
-                    if(edge.getToVertex().equals(this.start)){
-                        vertex.edges.remove(edge);
-                    }
-                }
-            }
-        }
-        if(start==null&&this.start!=null){
-            this.start.edges.clear();
-        }
-        vertices.remove(this.start);
-        shapes.remove(this.start);
+        vertices.remove(this.getStart());
+        shapes.remove(this.getStart());
+
         this.start = start;
         if(start!=null) {
             // Insert start and end nodes
@@ -175,11 +163,13 @@ public class Graph {
                         double distance = Math.sqrt(Math.pow(other.getX() - start.getX(), 2) + Math.pow(other.getY() - start.getY(), 2));
                         newEdge(start, other, distance, distance); // from, to, distance, time
                     }
+                    /*
                     // Make the other direction also
                     if (creatableRelation) {
                         double distance = Math.sqrt(Math.pow(other.getX() - start.getX(), 2) + Math.pow(other.getY() - start.getY(), 2));
                         newEdge(other, start, distance, distance); // from, to, distance, time
                     }
+                     */
                 }
 
             }
@@ -188,10 +178,10 @@ public class Graph {
 
     public void setEnd(Vertex end,Environment environment){
         for(Vertex vertex : vertices){
-            vertex.edges.remove(this.end);
+            vertex.edges.remove(this.getEnd());
         }
-        vertices.remove(this.end);
-        shapes.remove(this.end);
+        vertices.remove(this.getEnd());
+        shapes.remove(this.getEnd());
         if(end!=null){
             this.end = end;
 
@@ -254,6 +244,14 @@ public class Graph {
 
     public ArrayList<Overlay> getShapes() {
         return shapes;
+    }
+
+    public Vertex getStart() {
+        return start;
+    }
+
+    public Vertex getEnd() {
+        return end;
     }
 }
 

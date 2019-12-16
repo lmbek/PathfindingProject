@@ -17,11 +17,11 @@ public class Pathfinding {
     }
 
     public void run (Graph graph){
-        //if(start!=null&&end!=null){
+        if(start!=null&&end!=null){
             if(algorithm.equals("Dijkstra")){
                 Dijkstra dijkstra = new Dijkstra(graph);
-                //dijkstra.start(graph,start,end);
-                dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
+                dijkstra.start(graph,start,end);
+                //dijkstra.start(graph,graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
                 ArrayList<Vertex> result = dijkstra.getResult();
                 System.out.print("path is ");
                 for(Vertex vertex : result){
@@ -32,8 +32,8 @@ public class Pathfinding {
 
             } else if(algorithm.equals("A*")) {
                 AStar aStar = new AStar(graph);
-                //aStar.start(graph, start,end);
-                aStar.start(graph, graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
+                aStar.start(graph, start,end);
+                //aStar.start(graph, graph.getVertices().get(0),graph.getVertices().get(graph.getVertices().size()-1));
                 ArrayList<Vertex> result = aStar.getResult();
                 for(Vertex vertex : result){
                     System.out.print("->"+ vertex.name);
@@ -41,9 +41,9 @@ public class Pathfinding {
                 System.out.println();
                 this.result = result;
             }
-        //} else {
-        //    this.result = null;
-        //}
+        } else {
+            this.result = null;
+        }
     }
 
     public ArrayList<Vertex> getResult() {

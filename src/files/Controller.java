@@ -45,7 +45,11 @@ public class Controller {
         view.getUI().getGraphic().setGraph(graph);
         model.getPathfinding().run(graph);
         ArrayList<Vertex> resultPath = model.getPathfinding().getResult();
-        view.getUI().getGraphic().setResultPath(resultPath);
+        if(model.getGraph().getStart()!=null&&model.getGraph().getEnd()!=null) {
+            view.getUI().getGraphic().setResultPath(resultPath);
+        } else {
+            view.getUI().getGraphic().setResultPath(null);
+        }
         view.getUI().getGraphic().draw();
     }
 }
