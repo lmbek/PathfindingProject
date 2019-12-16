@@ -18,8 +18,8 @@ public class Controller {
         this.model = model;
 
         this.view = view;
-        this.input = new Input(model,view);
-        this.updateView();
+        this.input = new Input(model,view,this);
+        this.update();
     }
 
     private void onlyOneInstance (){
@@ -32,25 +32,21 @@ public class Controller {
         }
     }
 
-    // ON Start
-    private void run(){
-        //Graph graph = model.getGraph();
-        //view.getUI().getGraphic().setGraph(graph);
-        view.getUI().getGraphic().draw();
-    }
-
-    private void updateView(){
-        ArrayList<Shape> shapes = model.getEnvironment().getShapes();
+    public void update(){
+        model.getGraph().recalculate(model.getEnvironment());
         Graph graph = model.getGraph();
-        ArrayList<Vertex> resultingPath = model.getPathfinding().getResult();
+        ArrayList<Shape> shapes = model.getEnvironment().getShapes();
         view.getUI().getGraphic().setEnvironment(shapes);
         view.getUI().getGraphic().setGraph(graph);
-        view.getUI().getGraphic().setResultPath(resultingPath);
 
-        run();
+        updatePath();
     }
 
-    private void updateModel(){
-
+    public void updatePath(){
+        Graph graph = model.getGraph();
+        model.getPathfinding().run(graph);
+        ArrayList<Vertex> resultPath = model.getPathfinding().getResult();
+        view.getUI().getGraphic().setResultPath(resultPath);
+        view.getUI().getGraphic().draw();
     }
 }

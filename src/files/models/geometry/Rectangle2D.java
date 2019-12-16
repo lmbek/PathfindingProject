@@ -17,15 +17,15 @@ public class Rectangle2D extends Shape implements Environment {
     private Vector size;
     private Triangle2D firstHalf;
     private Triangle2D secondHalf;
-    Color bgColor;
-    Color borderColor;
-    int borderSize;
+    public Color bgColor;
+    public Color borderColor;
+    private double borderSize;
 
     public Rectangle2D(double x, double y, double width, double height, Color bgColor){
-        this(x, y, width, height, bgColor, null, 0);
+        this(x, y, width, height, bgColor, Color.BLUE,2);
     }
 
-    public Rectangle2D(double x, double y, double width, double height, Color bgColor, Color borderColor, int borderSize) {
+    public Rectangle2D(double x, double y, double width, double height, Color bgColor, Color borderColor, double borderSize) {
         A = new Point(x,y);
         B = new Point(x+width,y);
         C = new Point(x,y+height);
@@ -52,13 +52,14 @@ public class Rectangle2D extends Shape implements Environment {
         this.bgColor = bgColor;
         this.borderSize = borderSize;
     }
-    // TODO: there is an error where a Vertex from the graph can be generated on the line between the triangles
+
     public boolean isColliding(Point obj) {
         return firstHalf.isColliding(obj) || secondHalf.isColliding(obj);
     }
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
+        graphicsContext.setStroke(borderColor);
 
         if(bgColor!=null) {
             graphicsContext.setFill(bgColor);
@@ -69,8 +70,12 @@ public class Rectangle2D extends Shape implements Environment {
         if (borderSize!=0){
             graphicsContext.setLineWidth(borderSize);
             graphicsContext.strokeRect(position.getX(),position.getY(),size.getX(),size.getY());
-            graphicsContext.setStroke(borderColor);
         }
+
+    }
+
+    @Override
+    public void drawEdges(GraphicsContext graphicsContext) {
 
     }
 

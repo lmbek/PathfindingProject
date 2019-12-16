@@ -32,18 +32,22 @@ public class Vertex extends Vector implements Overlay {
     public void setF(double f) { this.f = f; }
     public double getF() { return f; }
 
+    @Override // This was a nasty quick fix, in order to hide the edges behind the nodes
+    public void drawEdges(GraphicsContext graphicsContext) {
+        for(Edge edge : edges){
+            Point from = new Point(edge.getFromVertex().getX(),edge.getFromVertex().getY());
+            Point to =  new Point(edge.getToVertex().getX(),edge.getToVertex().getY());
+
+            Line2D line = new Line2D(from,to,Color.BLACK,1);
+            line.draw(graphicsContext);
+        }
+    }
+
     @Override
     public void draw(GraphicsContext graphicsContext) {
         Circle circle = new Circle(new Point(super.getX(),super.getY()), 20, Color.WHITE, Color.BLACK, 1);
         Text text = new Text(name, super.getX(), super.getY()+3, 8, Color.BLACK, FontWeight.NORMAL, null);
         circle.draw(graphicsContext);
         text.draw(graphicsContext);
-        for(Edge edge : edges){
-            Point from = new Point(edge.getFromVertex().getX(),edge.getFromVertex().getY());
-            Point to =  new Point(edge.getToVertex().getX(),edge.getToVertex().getY());
-            Line2D line = new Line2D(from,to);
-            //line.draw(graphicsContext);
-        }
-
     }
 }
