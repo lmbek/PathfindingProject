@@ -103,9 +103,6 @@ public class Input {
                     selectPathfinding.setValue("A*");
                     model.setPathfinding((String) selectPathfinding.getValue());
                     selectPathfinding.setOnAction(event -> {
-                        model.setPathfinding((String) selectPathfinding.getValue());
-
-
 
                         model.getGraph().getVertices().forEach(vertex -> {
                             // Iterator necessary because we need to remove from ArrayList
@@ -127,6 +124,7 @@ public class Input {
                         model.getGraph().setEnd(null, model.getEnvironment());
                         model.getPathfinding().state = "unset";
 
+                        model.setPathfinding((String) selectPathfinding.getValue());
 
                         controller.updatePath();
                     });
